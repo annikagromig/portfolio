@@ -1,0 +1,7 @@
+{
+  "name": "Jozu Tradewinds Page Generator",
+  "id": "jozu-tradewinds-generator",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma", "dev"]
+}

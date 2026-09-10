@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Atkinson Hyperlegible'), local('AtkinsonHyperlegible-Regular');
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-weight: 700;
+  font-style: normal;
+  src: local('Atkinson Hyperlegible Bold'), local('AtkinsonHyperlegible-Bold');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'ABC Diatype Variable', 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+  background-color: #051714;
+  color: #ececec;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
