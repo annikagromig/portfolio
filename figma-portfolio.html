@@ -1215,5 +1215,107 @@
     }
   </script>
 
+<!-- Analytics consent banner -->
+<style>
+  .consent-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 16px 24px;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+    background: var(--bg, #fff);
+    border: 1px solid var(--border, rgba(38, 38, 38, 0.1));
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(38, 38, 38, 0.12);
+    font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+    animation: consent-in 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .consent-banner[hidden] { display: none; }
+  .consent-banner p {
+    flex: 1 1 260px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--muted, #666);
+  }
+  .consent-banner__actions { display: flex; gap: 8px; }
+  .consent-banner button {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border, rgba(38, 38, 38, 0.1));
+    background: transparent;
+    color: var(--ink, #262626);
+    transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+  }
+  .consent-banner button:hover { border-color: var(--accent, #ff00aa); color: var(--accent, #ff00aa); }
+  .consent-banner button[data-consent="granted"] {
+    background: var(--ink, #262626);
+    border-color: var(--ink, #262626);
+    color: #fff;
+  }
+  .consent-banner button[data-consent="granted"]:hover { background: var(--accent, #ff00aa); border-color: var(--accent, #ff00aa); color: #fff; }
+  .consent-banner button:focus-visible { outline: 2px solid var(--accent, #ff00aa); outline-offset: 2px; }
+  @keyframes consent-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .consent-banner { animation: none; } }
+</style>
+<div class="consent-banner" id="consent-banner" role="dialog" aria-label="Analytics consent" hidden>
+  <p>I use Google Analytics to understand how people find and use this site. It only runs if you accept.</p>
+  <div class="consent-banner__actions">
+    <button type="button" data-consent="denied">Decline</button>
+    <button type="button" data-consent="granted">Accept</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var GA_ID = 'G-BKE88TFZR3';
+    var KEY = 'analytics-consent';
+    var banner = document.getElementById('consent-banner');
+
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+    function loadAnalytics() {
+      if (!GA_ID || GA_ID === 'G-XXXXXXXXXX' || window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID, { anonymize_ip: true });
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+      document.head.appendChild(s);
+    }
+
+    var choice = read();
+    if (choice === 'granted') {
+      loadAnalytics();
+    } else if (choice !== 'denied') {
+      banner.hidden = false;
+    }
+
+    banner.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-consent]');
+      if (!btn) return;
+      var value = btn.getAttribute('data-consent');
+      write(value);
+      banner.hidden = true;
+      if (value === 'granted') loadAnalytics();
+    });
+  })();
+</script>
+<!-- /Analytics consent banner -->
+
 </body>
 </html>
