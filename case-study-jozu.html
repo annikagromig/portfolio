@@ -569,6 +569,7 @@
       <p>Designed in Figma, created with Claude Code.</p>
       <p>Vancouver, BC, Canada 🍁</p>
     </div>
+  <div class="footer-legal"><a href="privacy.html">Privacy</a><button type="button" data-open-consent>Cookie settings</button></div>
   </footer>
 
   <script>
@@ -656,11 +657,38 @@
   }
   .consent-banner button[data-consent="granted"]:hover { background: var(--accent, #ff00aa); border-color: var(--accent, #ff00aa); color: #fff; }
   .consent-banner button:focus-visible { outline: 2px solid var(--accent, #ff00aa); outline-offset: 2px; }
+  .consent-banner p a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .consent-banner p a:hover { color: var(--accent, #ff00aa); }
+  .footer-legal {
+    max-width: var(--w-wide, 1120px);
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: 12px;
+    color: var(--muted, #666);
+  }
+  .footer-legal a,
+  .footer-legal button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .footer-legal a:hover,
+  .footer-legal button:hover { color: var(--accent, #ff00aa); }
+  .footer-legal a:focus-visible,
+  .footer-legal button:focus-visible { outline: 2px solid var(--accent, #ff00aa); outline-offset: 2px; }
   @keyframes consent-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   @media (prefers-reduced-motion: reduce) { .consent-banner { animation: none; } }
 </style>
 <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Analytics consent" hidden>
-  <p>I use Google Analytics to understand how people find and use this site. It only runs if you accept.</p>
+  <p>I use Google Analytics to understand how people find and use this site. It only runs if you accept. <a href="privacy.html">Privacy notice</a></p>
   <div class="consent-banner__actions">
     <button type="button" data-consent="denied">Decline</button>
     <button type="button" data-consent="granted">Accept</button>
@@ -695,13 +723,34 @@
       banner.hidden = false;
     }
 
+    function stopAnalytics() {
+      window['ga-disable-' + GA_ID] = true;
+      var host = location.hostname;
+      document.cookie.split(';').forEach(function (c) {
+        var name = c.split('=')[0].trim();
+        if (name.indexOf('_ga') !== 0) return;
+        ['', host, '.' + host].forEach(function (d) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : '');
+        });
+      });
+    }
+
     banner.addEventListener('click', function (e) {
       var btn = e.target.closest('button[data-consent]');
       if (!btn) return;
       var value = btn.getAttribute('data-consent');
       write(value);
       banner.hidden = true;
-      if (value === 'granted') loadAnalytics();
+      if (value === 'granted') {
+        window['ga-disable-' + GA_ID] = false;
+        loadAnalytics();
+      } else {
+        stopAnalytics();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-open-consent]')) banner.hidden = false;
     });
   })();
 </script>
