@@ -1149,7 +1149,7 @@
     function updateLocalTime() {
       var el = document.getElementById('local-time');
       if (!el) return;
-      var time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      var time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Vancouver' });
       el.textContent = time + ' local time';
     }
     updateLocalTime();
