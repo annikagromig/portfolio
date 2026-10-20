@@ -104,16 +104,15 @@ h1 {
 .meta > div { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .meta dt { flex: 0 0 180px; font-size: 14px; color: var(--muted); }
 .meta dd { flex: 1 1 0; min-width: 0; font-size: 14px; line-height: 22px; color: var(--ink); }
+.meta dd a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: color 200ms ease, border-color 200ms ease; }
+.meta dd a:hover { color: var(--accent); border-color: var(--accent); }
 .hero-img { border-radius: 8px; overflow: hidden; border: 1px solid var(--frame-line); }
 
 /* ---------- Sections ---------- */
 section { padding: var(--section-py) 0; }
 .split { max-width: var(--measure); margin: 0 auto; display: flex; flex-direction: column; gap: var(--section-gap); }
 .kicker { display: flex; align-items: baseline; margin-bottom: 80px; color: var(--accent); }
-.kicker .n,
 .kicker .t { font-size: 12px; line-height: 20px; letter-spacing: 0.48px; text-transform: lowercase; }
-.kicker .n::after { content: " /"; }
-.kicker .t { margin-left: 0.35em; }
 h2 { font-weight: 400; font-size: 30px; line-height: 36px; color: var(--ink); }
 h3 { font-weight: 500; font-size: 18px; line-height: 26px; color: var(--ink); }
 .prose { display: flex; flex-direction: column; gap: 16px; }
@@ -193,7 +192,7 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .tag--ash { background: var(--kit-ash); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .chips span { font-size: 13px; padding: 3px 10px; border-radius: 6px; background: var(--surface-2); color: var(--ink); }
-.card--tension { margin-top: 24px; }
+.tension { max-width: var(--measure); margin: var(--section-gap) auto 0; }
 
 /* ---------- Logo rounds ---------- */
 .rounds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: var(--section-gap); }
@@ -242,21 +241,18 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .sample--body { font-family: var(--kit-body); font-size: clamp(18px, 2vw, 22px); line-height: 1.5; }
 
 /* ---------- Personality ---------- */
+.pull-quote { max-width: 900px; margin: var(--section-gap) 0 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--border); font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--muted); }
+.pull-quote strong { font-weight: 500; color: var(--ink); }
+.pull-quote + .hoody { margin-top: var(--section-gap); }
 .quote { max-width: var(--measure); margin: 32px auto 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--kit-gold); }
 .quote p.big { font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--ink); }
 .quote .src { margin-top: 16px; font-size: 14px; line-height: 22px; color: var(--muted); }
 
 /* ---------- Mascot (brand being shown) ---------- */
-.mascot-band { background: var(--kit-gold); color: var(--kit-night); border-radius: 8px; padding: clamp(28px, 5vw, 56px); }
-.mascot-band .split { max-width: var(--measure); margin-left: 0; }
-.mascot-band .kicker { color: var(--kit-night); }
-.mascot-band h2,
-.mascot-band .prose p { color: var(--kit-night); }
 .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: var(--section-gap); }
-.why div { background: rgba(18, 18, 18, 0.08); border-radius: 8px; padding: 20px; }
-.why b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; }
-.why span { font-size: 14px; line-height: 22px; color: #3a2d16; }
-.mascot-band + .grid { margin-top: var(--section-gap); }
+.why div { border: 1px solid var(--border); border-radius: 8px; padding: 24px; background: var(--surface); }
+.why b { display: block; margin-bottom: 4px; font-size: 16px; font-weight: 500; color: var(--ink); }
+.why span { font-size: 14px; line-height: 22px; color: var(--muted); }
 .champ { grid-template-columns: minmax(0, 420px) 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; margin-top: 48px; }
 
 /* ---------- Stats + CTA ---------- */
