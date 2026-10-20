@@ -242,6 +242,7 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .sample--body { font-family: var(--kit-body); font-size: clamp(18px, 2vw, 22px); line-height: 1.5; }
 
 /* ---------- Personality ---------- */
+.archetypes { max-width: 760px; margin: var(--section-gap) auto 0; }
 .pull-quote { max-width: var(--measure); margin: var(--section-gap) auto 0; padding: 0 0 0 24px; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--muted); }
 .pull-quote { position: relative; }
 .pull-quote::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 2px; background: rgba(255, 255, 255, 0.22); }
