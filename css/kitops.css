@@ -242,7 +242,7 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .sample--body { font-family: var(--kit-body); font-size: clamp(18px, 2vw, 22px); line-height: 1.5; }
 
 /* ---------- Personality ---------- */
-.pull-quote { max-width: 900px; margin: var(--section-gap) 0 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--border); font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--muted); }
+.pull-quote { max-width: var(--measure); margin: var(--section-gap) auto 0; padding: 0; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--muted); }
 .pull-quote strong { font-weight: 500; color: var(--ink); }
 .pull-quote + .hoody { margin-top: var(--section-gap); }
 .quote { max-width: var(--measure); margin: 32px auto 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--kit-gold); }
