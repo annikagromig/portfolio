@@ -243,6 +243,8 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 /* ---------- Personality ---------- */
 .pull-quote { max-width: var(--measure); margin: var(--section-gap) auto 0; padding: 0; font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45; color: var(--muted); }
+.pull-quote { position: relative; }
+.pull-quote::before { content: ""; position: absolute; left: -24px; top: 4px; bottom: 4px; width: 2px; background: rgba(255, 255, 255, 0.22); }
 .pull-quote strong { font-weight: 500; color: var(--ink); }
 .pull-quote + .hoody { margin-top: var(--section-gap); }
 .quote { max-width: var(--measure); margin: 32px auto 0; padding: 4px 0 4px 24px; border-left: 2px solid var(--kit-gold); }
@@ -361,6 +363,7 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   .footer-inner { justify-content: center; text-align: center; }
 }
 @media (max-width: 520px) {
+  .pull-quote::before { left: -14px; }
   .s3 { grid-template-columns: 1fr 1fr; }
   .sw .chip { height: 64px; }
   .masonry { columns: 1; }
