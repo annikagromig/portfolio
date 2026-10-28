@@ -938,6 +938,17 @@
       var input = document.getElementById('gate-input');
       var error = document.getElementById('gate-error');
       var root = document.documentElement;
+      var closeLink = document.querySelector('.gate__close');
+      if (closeLink) {
+        closeLink.addEventListener('click', function (e) {
+          try {
+            if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) {
+              e.preventDefault();
+              history.back();
+            }
+          } catch (err) {}
+        });
+      }
       function hash(s) {
         var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
         for (var i = 0, ch; i < s.length; i++) {
