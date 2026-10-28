@@ -474,6 +474,59 @@
   .gate__input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .gate__error { font-size: 14px; line-height: 22px; color: var(--accent); }
   .gate__error:empty { display: none; }
+  .case-figure a.lb { display: block; width: 100%; cursor: zoom-in; }
+  .case-figure a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+  .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(255, 255, 255, 0.97);
+    display: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .lightbox.is-open { display: block; }
+  .lightbox__frame {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 72px 24px 40px;
+  }
+  .lightbox__img {
+    max-width: min(100%, 1400px);
+    max-height: calc(100vh - 160px);
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    background: #fff;
+  }
+  .lightbox.is-full .lightbox__frame { justify-content: flex-start; align-items: flex-start; }
+  .lightbox.is-full .lightbox__img { max-width: none; max-height: none; cursor: zoom-out; }
+  .lightbox__caption { font-size: 13px; line-height: 20px; color: var(--muted); text-align: center; max-width: 620px; }
+  .lightbox.is-full .lightbox__caption { display: none; }
+  .lightbox__close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox__close:hover { color: var(--accent); border-color: var(--accent); }
 </style>
 <style>
   .footer-legal {
@@ -675,6 +728,14 @@
     <div class="bar"><button class="prev" aria-label="Previous image">&larr;</button><div class="cap"></div><button class="nextb" aria-label="Next image">&rarr;</button></div>
   </div>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button type="button" class="lightbox__close" aria-label="Close">&times;</button>
+    <div class="lightbox__frame">
+      <img class="lightbox__img" alt="" />
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
   <script>
     var revealSelector = '.case-hero__title, .case-hero__subtitle, .case-hero__intro, .meta-table, .section__head, .prose, .pull-quote, .case-figure, .takeaway-card, .case-study-card, .footer-inner';
     var revealEls = Array.prototype.slice.call(document.querySelectorAll(revealSelector));
@@ -782,6 +843,40 @@
       var behind = Array.prototype.slice.call(document.querySelectorAll('.site-header, main > :not(#gate), .site-footer'));
       function setInert(on) { behind.forEach(function (el) { if (on) el.setAttribute('inert', ''); else el.removeAttribute('inert'); }); }
       if (root.classList.contains('is-locked')) { setInert(true); input.focus(); }
+    })();
+  </script>
+  <script>
+    // Lightbox: click an image to enlarge, click again for full size
+    (function () {
+      var box = document.getElementById('lightbox');
+      var img = box.querySelector('.lightbox__img');
+      var cap = box.querySelector('.lightbox__caption');
+      var closeBtn = box.querySelector('.lightbox__close');
+      var lastFocus = null;
+      function open(src, alt, caption) {
+        lastFocus = document.activeElement;
+        img.src = src; img.alt = alt || ''; cap.textContent = caption || '';
+        box.hidden = false; box.classList.add('is-open'); box.classList.remove('is-full');
+        box.scrollTop = 0; box.scrollLeft = 0;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function close() {
+        box.classList.remove('is-open', 'is-full'); box.hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+      document.querySelectorAll('a.lb').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var im = a.querySelector('img');
+          open(a.getAttribute('href'), im ? im.alt : '', a.getAttribute('data-caption'));
+        });
+      });
+      img.addEventListener('click', function (e) { e.stopPropagation(); box.classList.toggle('is-full'); });
+      box.addEventListener('click', function (e) { if (e.target === box || e.target.classList.contains('lightbox__frame')) close(); });
+      closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
     })();
   </script>
 </body>

@@ -457,6 +457,59 @@
   .gate__input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .gate__error { font-size: 14px; line-height: 22px; color: var(--accent); }
   .gate__error:empty { display: none; }
+  .case-figure a.lb { display: block; width: 100%; cursor: zoom-in; }
+  .case-figure a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+  .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(255, 255, 255, 0.97);
+    display: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .lightbox.is-open { display: block; }
+  .lightbox__frame {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 72px 24px 40px;
+  }
+  .lightbox__img {
+    max-width: min(100%, 1400px);
+    max-height: calc(100vh - 160px);
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: zoom-in;
+    background: #fff;
+  }
+  .lightbox.is-full .lightbox__frame { justify-content: flex-start; align-items: flex-start; }
+  .lightbox.is-full .lightbox__img { max-width: none; max-height: none; cursor: zoom-out; }
+  .lightbox__caption { font-size: 13px; line-height: 20px; color: var(--muted); text-align: center; max-width: 620px; }
+  .lightbox.is-full .lightbox__caption { display: none; }
+  .lightbox__close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox__close:hover { color: var(--accent); border-color: var(--accent); }
 </style>
 <style>
   .footer-legal {
@@ -626,11 +679,11 @@
         </div>
         <blockquote class="pull-quote">A temporary feature deserves <strong>a temporary footprint.</strong></blockquote>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/asw-user-flow.webp" width="2600" height="2977" loading="lazy" alt="Complete user flow for Adler Shopping Week: internal touchpoints, landing page, event page, partner shops, shop details, ticket detail and ticket wallet, connected by arrows" />
+          <a class="lb" href="media/mainaqila/asw-user-flow.webp" data-caption="The complete user flow: from teasers on existing touchpoints, through the landing page and voucher purchase, to partner shops and the ticket wallet."><img src="media/mainaqila/asw-user-flow.webp" width="2600" height="2977" loading="lazy" alt="Complete user flow for Adler Shopping Week: internal touchpoints, landing page, event page, partner shops, shop details, ticket detail and ticket wallet, connected by arrows" /></a>
           <figcaption>The complete user flow: from teasers on existing touchpoints, through the landing page and voucher purchase, to partner shops and the ticket wallet.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/asw-touchpoints.webp" width="1675" height="1976" loading="lazy" alt="Internal touchpoints across the app, such as feed teasers and shop banners, each linking to the Adler Shopping Week event page" />
+          <a class="lb" href="media/mainaqila/asw-touchpoints.webp" data-caption="Teasers across the app advertise the event without needing a new entry in the navigation."><img src="media/mainaqila/asw-touchpoints.webp" width="1675" height="1976" loading="lazy" alt="Internal touchpoints across the app, such as feed teasers and shop banners, each linking to the Adler Shopping Week event page" /></a>
           <figcaption>Teasers across the app advertise the event without needing a new entry in the navigation.</figcaption>
         </figure>
         <div class="prose">
@@ -644,15 +697,15 @@
           <figcaption>The event page ahead of the start, and a partner shop detail page.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/asw-event-states.webp" width="1329" height="1337" loading="lazy" alt="Three versions of the event page: without voucher, with voucher before the event, and during the live event" />
+          <a class="lb" href="media/mainaqila/asw-event-states.webp" data-caption="The event page adapts to the fan: it changes depending on whether they own a voucher, and whether the event is upcoming or live."><img src="media/mainaqila/asw-event-states.webp" width="1329" height="1337" loading="lazy" alt="Three versions of the event page: without voucher, with voucher before the event, and during the live event" /></a>
           <figcaption>The event page adapts to the fan: it changes depending on whether they own a voucher, and whether the event is upcoming or live.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/asw-partner-shops.webp" width="2196" height="1218" loading="lazy" alt="Partner shop flow: shop list, shop details, opening hours, and a start navigation sheet" />
+          <a class="lb" href="media/mainaqila/asw-partner-shops.webp" data-caption="Partner shop pages connect to Google Maps, so fans can find the next participating shop in a few taps."><img src="media/mainaqila/asw-partner-shops.webp" width="2196" height="1218" loading="lazy" alt="Partner shop flow: shop list, shop details, opening hours, and a start navigation sheet" /></a>
           <figcaption>Partner shop pages connect to Google Maps, so fans can find the next participating shop in a few taps.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/asw-wallet.webp" width="973" height="942" loading="lazy" alt="Wallet screen listing current tickets, with the Adler Shopping Week voucher leading to a ticket detail view" />
+          <a class="lb" href="media/mainaqila/asw-wallet.webp" data-caption="After purchase, the voucher moves into the app's wallet so it is always within reach."><img src="media/mainaqila/asw-wallet.webp" width="973" height="942" loading="lazy" alt="Wallet screen listing current tickets, with the Adler Shopping Week voucher leading to a ticket detail view" /></a>
           <figcaption>After purchase, the voucher moves into the app's wallet so it is always within reach.</figcaption>
         </figure>
       </div>
@@ -703,19 +756,19 @@
         </div>
         <blockquote class="pull-quote">Documentation isn't an afterthought. <strong>It is part of the design.</strong></blockquote>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/library-buttons.webp" width="2400" height="3188" loading="lazy" alt="Library page for buttons and text links, shown on white, black and dark mode backgrounds with usage examples and contrast checks" />
+          <a class="lb" href="media/mainaqila/library-buttons.webp" data-caption="Buttons and text links on every background, with usage examples and contrast checks."><img src="media/mainaqila/library-buttons.webp" width="2400" height="3188" loading="lazy" alt="Library page for buttons and text links, shown on white, black and dark mode backgrounds with usage examples and contrast checks" /></a>
           <figcaption>Buttons and text links on every background, with usage examples and contrast checks.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
-            <img src="media/mainaqila/library-colors.webp" width="2400" height="4096" loading="lazy" alt="Library page for color schemes, each applied to example screens" />
-            <figcaption>Color schemes, shown in real screens.</figcaption>
-          </figure>
+          <a class="lb" href="media/mainaqila/library-colors.webp" data-caption="Color schemes, shown in real screens."><img src="media/mainaqila/library-colors.webp" width="2400" height="4096" loading="lazy" alt="Library page for color schemes, each applied to example screens" /></a>
+          <figcaption>Color schemes, shown in real screens.</figcaption>
+        </figure>
         <figure class="case-figure case-figure--board">
-            <img src="media/mainaqila/library-snackbar.webp" width="2200" height="3803" loading="lazy" alt="Library page for the snackbar component with variants, arrangement and examples of use" />
-            <figcaption>Snackbar variants, behavior and examples of use.</figcaption>
-          </figure>
+          <a class="lb" href="media/mainaqila/library-snackbar.webp" data-caption="Snackbar variants, behavior and examples of use."><img src="media/mainaqila/library-snackbar.webp" width="2200" height="3803" loading="lazy" alt="Library page for the snackbar component with variants, arrangement and examples of use" /></a>
+          <figcaption>Snackbar variants, behavior and examples of use.</figcaption>
+        </figure>
         <figure class="case-figure case-figure--board">
-          <img src="media/mainaqila/library-type-scale.webp" width="2600" height="1622" loading="lazy" alt="Type scale for mobile and three tablet sizes, from H1 Stage down to body text" />
+          <a class="lb" href="media/mainaqila/library-type-scale.webp" data-caption="A responsive type scale for mobile and three tablet sizes, which also laid the groundwork for the tablet adaptation."><img src="media/mainaqila/library-type-scale.webp" width="2600" height="1622" loading="lazy" alt="Type scale for mobile and three tablet sizes, from H1 Stage down to body text" /></a>
           <figcaption>A responsive type scale for mobile and three tablet sizes, which also laid the groundwork for the tablet adaptation.</figcaption>
         </figure>
       </div>
@@ -786,6 +839,14 @@
     </div>
   <div class="footer-legal"><a href="privacy.html">Privacy</a></div>
   </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+    <button type="button" class="lightbox__close" aria-label="Close">&times;</button>
+    <div class="lightbox__frame">
+      <img class="lightbox__img" alt="" />
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
 
   <script>
     var revealSelector = '.case-hero__title, .case-hero__subtitle, .case-hero__intro, .meta-table, .section__head, .prose, .pull-quote, .case-figure, .takeaway-card, .case-study-card, .footer-inner';
@@ -858,6 +919,40 @@
       var behind = Array.prototype.slice.call(document.querySelectorAll('.site-header, main > :not(#gate), .site-footer'));
       function setInert(on) { behind.forEach(function (el) { if (on) el.setAttribute('inert', ''); else el.removeAttribute('inert'); }); }
       if (root.classList.contains('is-locked')) { setInert(true); input.focus(); }
+    })();
+  </script>
+  <script>
+    // Lightbox: click an image to enlarge, click again for full size
+    (function () {
+      var box = document.getElementById('lightbox');
+      var img = box.querySelector('.lightbox__img');
+      var cap = box.querySelector('.lightbox__caption');
+      var closeBtn = box.querySelector('.lightbox__close');
+      var lastFocus = null;
+      function open(src, alt, caption) {
+        lastFocus = document.activeElement;
+        img.src = src; img.alt = alt || ''; cap.textContent = caption || '';
+        box.hidden = false; box.classList.add('is-open'); box.classList.remove('is-full');
+        box.scrollTop = 0; box.scrollLeft = 0;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function close() {
+        box.classList.remove('is-open', 'is-full'); box.hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+      document.querySelectorAll('a.lb').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var im = a.querySelector('img');
+          open(a.getAttribute('href'), im ? im.alt : '', a.getAttribute('data-caption'));
+        });
+      });
+      img.addEventListener('click', function (e) { e.stopPropagation(); box.classList.toggle('is-full'); });
+      box.addEventListener('click', function (e) { if (e.target === box || e.target.classList.contains('lightbox__frame')) close(); });
+      closeBtn.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
     })();
   </script>
 </body>
