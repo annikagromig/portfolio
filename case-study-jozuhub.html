@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jozu Hub Product Design | Annika Gromig</title>
+<meta name="description" content="Case study: designing Jozu Hub from 0 to 1, a platform for AI supply chain security and governance. UX process, design system, and the product screen by screen.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Titillium+Web:wght@300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/kitops.css" />
+<link rel="stylesheet" href="css/jozuhub.css" />
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3f275b73-d81c-4c6d-b5e9-bce76691596a" data-domains="annikagromig.com,www.annikagromig.com,annikagromig.github.io" data-do-not-track="true"></script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__home">annika gromig</a>
+      <div class="nav__status">
+        <span class="status-dot"></span>
+        <span>Open for work</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">case study / product design</p>
+    <h1>Jozu Hub: designing AI supply chain security from 0 to 1</h1>
+    <p class="lede">Jozu Hub is where teams store, scan, and govern the AI models and agents they ship to production. As founding designer I took it from a blank Figma file to a live platform: the UX process, a documented design system, and every core screen and flow.</p>
+    <div class="hero-actions">
+      <a class="btn hero-link" href="case-study-jozuhub-gallery.html">Open image gallery <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      <a class="btn hero-link" href="case-study-jozuhub-flows.html">View user flows <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+    </div>
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Founding Designer and UX Lead, Jozu</dd></div>
+      <div><dt>Scope</dt><dd>UX research, information architecture, UI design, design system, prototyping, documentation UX</dd></div>
+      <div><dt>Product</dt><dd>Jozu Hub, AI supply chain security and governance platform</dd></div>
+      <div><dt>Timeline</dt><dd>2023 to 2026</dd></div>
+      <div><dt>Deep dive</dt><dd><a href="case-study-jozu.html">Agent Guard Fleet View</a>, a feature within Jozu Hub</dd></div>
+      <div><dt>Try it</dt><dd><a href="https://jozu.ml/catalog" target="_blank" rel="noopener noreferrer">jozu.ml</a></dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero-img"><img src="media/jozuhub/hero-status.webp" alt="The Jozu Hub Status page: counts for ModelKits in production, critical security issues, unacceptable license issues and recent pushes, a list of security issues by severity, and a recent activity feed" width="2240" height="1495"></div>
+</div>
+
+<!-- 01 Product -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">The product</span></div>
+        <h2>A registry that knows what is safe to ship</h2>
+      </div>
+      <div class="prose">
+        <p>Teams now ship models, datasets, prompts, agent skills, and MCP servers the way they ship code. Jozu Hub is the private registry for all of it. Every artifact is packaged as a versioned, signed ModelKit, scanned for security threats and license problems, and governed by policies before it ever reaches production.</p>
+        <p>The audience is technical and busy: ML engineers who push models, platform teams who run the infrastructure, and security and compliance people who have to say yes or no. They all need the same answer fast, from different angles.</p>
+        <p>The Status page is that answer on one screen. Four numbers tell you whether anything risky is heading to production, followed by open security and license issues ranked by severity and a feed of what the team just pushed or pulled.</p>
+      </div>
+    </div>
+    <blockquote class="pull-quote">How do you make AI supply chain security <strong>readable at a glance for engineers, and defensible in detail for compliance?</strong></blockquote>
+  </div>
+</section>
+
+<!-- 02 Process -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">Process</span></div>
+        <h2>Building from 0 to 1</h2>
+      </div>
+      <div class="prose">
+        <p>There was no product to redesign and no design team to inherit from. I joined Jozu in 2023 as its first designer, so the process had to be rigorous enough to trust and light enough for a startup that ships every week.</p>
+        <p>I ran a classic UX cycle tuned for speed, so every step ended in something we could build or test fast.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div><b>Discover</b><span>Interviews with ML and platform engineers, a review of registries and security tools they already used, and long sessions with the CEO and CTO on the domain.</span></div>
+      <div><b>Define</b><span>Personas, jobs to be done, and a map of who pushes, who approves, and who audits. Each flow starts with an actor, goal, trigger, and preconditions.</span></div>
+      <div><b>Ideate</b><span>Information architecture for repositories, organizations, and policies, then sketches and wireframes for the most important screens first.</span></div>
+      <div><b>Prototype</b><span>Clickable Figma and AI-generated prototypes for whole flows, including error and empty states, reviewed with engineering before a line of code.</span></div>
+      <div><b>Test and iterate</b><span>Usability checks with users and internal teams, then revisions after release based on feedback and how the product was actually used.</span></div>
+    </div>
+
+    <div class="sub">
+      <h3>Discover: how ML teams actually work</h3>
+      <p class="intro">Before designing anything, I mapped how a model gets from a notebook to production today: data engineering, model selection, experimentation, and deployment, for solo and team setups. That map showed where Jozu could start. Alongside it, a competitor analysis of leading MLOps tools showed how they present themselves and where the gaps were.</p>
+      <div class="grid">
+        <a class="lb" href="media/jozuhub/research-ml-workflow.webp" data-wide data-caption="Mapping the ML workflow: model training, experimentation, and deployment, with inputs, outputs, and tools at each step">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/research-ml-workflow.webp" alt="Workflow map with columns for model training, model experimentation, and model deployment, plus sticky notes" loading="lazy" width="960" height="453"></div>
+          <figcaption>The ML workflow before Jozu, and where Jozu fits in.</figcaption></figure>
+        </a>
+        <a class="lb" href="media/jozuhub/research-competitors.webp" data-wide data-caption="Competitor analysis of MLOps tools">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/research-competitors.webp" alt="Competitor analysis board with website screenshots of MLOps tools" loading="lazy" width="960" height="330"></div>
+          <figcaption>Competitor analysis of MLOps tools.</figcaption></figure>
+        </a>
+      </div>
+    </div>
+
+    <div class="sub">
+      <h3>Define: three people, one approval</h3>
+      <p class="intro">Research turned into three personas. Their goals pull in different directions, and the product has to serve all of them in the same moment: when a model needs approval to ship.</p>
+      <div class="cards traits">
+        <div class="card"><span class="tag tag--muted">Compliance Officer</span><h3>Sarah</h3><p>Has to make sure only vetted models reach production, with a complete audit trail. Today approvals arrive by Slack and email with almost no context.</p><div class="chips"><span>context at a glance</span><span>batch approvals</span><span>audit trail</span></div></div>
+        <div class="card"><span class="tag tag--muted">ML Engineer</span><h3>David</h3><p>Wants to ship model updates within a day of training. Deployments fail with "approval required" and no hint of who to ask or how long it takes.</p><div class="chips"><span>pre-flight checks</span><span>self-service</span><span>clear errors</span></div></div>
+        <div class="card"><span class="tag tag--muted">Security Engineer</span><h3>Marcus</h3><p>Responds to incidents within minutes. Cannot tell which models a new CVE affects, or block a vulnerable model instantly.</p><div class="chips"><span>find by CVE</span><span>instant revocation</span><span>blast radius</span></div></div>
+      </div>
+      <div class="grid">
+        <a class="lb" href="media/jozuhub/research-personas.webp" data-caption="Personas: Sarah Chen, Compliance Officer; David Rodriguez, ML Engineer; Marcus Johnson, Security Engineer">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/research-personas.webp" alt="Persona board with demographics, goals, pain points, and key needs for Sarah, David, and Marcus" loading="lazy" width="960" height="477"></div>
+          <figcaption>The full personas, with goals, pain points, and key needs.</figcaption></figure>
+        </a>
+        <a class="lb" href="media/jozuhub/flow-approval-swimlane.webp" data-wide data-caption="User workflow for a standard approval across the CLI, Slack, and Jozu Hub">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/flow-approval-swimlane.webp" alt="Swimlane diagram with lanes for CLI, Slack, and Jozu Hub, showing David requesting approval and Sarah approving" loading="lazy" width="960" height="507"></div>
+          <figcaption>From personas to a workflow: David and Sarah's approval across the CLI, Slack, and Jozu Hub.</figcaption></figure>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 AI -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">AI in the process</span></div>
+        <h2>AI drafts, I decide</h2>
+      </div>
+      <div class="prose">
+        <p>I used AI as a fast collaborator at the points where speed matters most, and kept every product decision with people.</p>
+        <ul class="points">
+          <li><strong>Synthesis.</strong> Clustering interview notes and feedback into themes, which I then checked against the raw notes.</li>
+          <li><strong>Edge cases.</strong> Asking for everything that can go wrong in a flow: a scanner that fails, a missing permission, an expired approval. Many of those became real error and empty states.</li>
+          <li><strong>Documentation.</strong> Turning my rough notes into first drafts of component descriptions and usage rules, then editing them for accuracy.</li>
+          <li><strong>Prototyping in code.</strong> Building working prototypes with Claude Code to test interactions with real data, and to talk to engineers in their own medium.</li>
+        </ul>
+        <p>Working with AI also changed how I write the design system. More on that below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Design system -->
+<section id="system">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">Design system</span></div>
+        <h2>One system for designers, engineers, and AI</h2>
+      </div>
+      <div class="prose">
+        <p>A product with this many tables, statuses, and severity levels falls apart without a system. I set up the Jozu Hub design system in Figma and built it together with engineering, so every component in the file matches a component in code.</p>
+        <p>The front end is built with Tailwind CSS, an open-source, utility-first CSS framework. Keeping names and scales in Figma close to Tailwind's made handoff simple: engineers could read a design and know which utilities to use.</p>
+      </div>
+    </div>
+
+    <div class="why why--wide">
+      <div><b>Atomic design</b><span>Foundations first, then components, then patterns and pages.</span></div>
+      <div><b>Semantic tokens</b><span>Names like text/action instead of raw values, so intent travels with the color.</span></div>
+      <div><b>Documented in Figma</b><span>Every component has a description and usage rules right where people use it.</span></div>
+      <div><b>Accessible by default</b><span>Contrast checked on every pairing, targeting WCAG 2.2 AA.</span></div>
+    </div>
+
+    <!-- How to start -->
+    <div class="sub">
+      <h3>How to start: atomic design</h3>
+      <p class="intro">I started with an audit of what already existed in the product and the codebase, then built from the smallest pieces up. Working closely with engineers meant names, props, and states matched on both sides from day one.</p>
+      <div class="ladder">
+        <div><span class="lv">Foundations</span><p>Color tokens, typography, spacing, radius, elevation. <span>The layer every other decision depends on.</span></p></div>
+        <div><span class="lv">Components</span><p>The ones used most, first: buttons, inputs, checkboxes, radio buttons, tags. <span>Each with every state: default, hover, focus, disabled.</span></p></div>
+        <div><span class="lv">Patterns</span><p>Cards, tables, filters, dialogs, empty states. <span>Built only from the components above.</span></p></div>
+        <div><span class="lv">Pages</span><p>Status, Catalog, Repository, Organization. <span>Assembled from patterns, never drawn from scratch.</span></p></div>
+      </div>
+      <div class="grid g2">
+        <a class="lb span2" href="media/jozuhub/ds-color-shades.webp" data-wide data-caption="Color shades: the brand turquoise and supporting reds, oranges, yellows, blues, greens, and neutrals, each in a full scale">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/ds-color-shades.webp" alt="Color shade scales for turquoise, red, orange, yellow, blue, green, and gray" loading="lazy" width="960" height="473"></div>
+          <figcaption>Foundations: a full scale for every color, including the status colors security work depends on.</figcaption></figure>
+        </a>
+        <a class="lb" href="media/jozuhub/ds-buttons-matrix.webp" data-caption="Buttons: primary, secondary, text, icon, and danger variants in default, hover, focus, and disabled states">
+          <figure class="crop ar-1x1"><div class="frame"><img src="media/jozuhub/ds-buttons-matrix.webp" alt="Button matrix with variants in rows and states in columns, including red danger variants" loading="lazy" width="1340" height="1460"></div>
+          <figcaption>Buttons: every variant in every state.</figcaption></figure>
+        </a>
+        <a class="lb" href="media/jozuhub/ds-radio.webp" data-caption="Radio button documentation: description, usage rules, and states">
+          <figure class="crop ar-1x1"><div class="frame"><img src="media/jozuhub/ds-radio.webp" alt="Radio button component page with a short description, three usage rules, and a state grid" loading="lazy" width="1231" height="988"></div>
+          <figcaption>Radio buttons, with usage rules written next to the states.</figcaption></figure>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tokens -->
+    <div class="sub">
+      <h3>Semantic tokens instead of raw values</h3>
+      <p class="intro">Raw colors live in the palette. Everything in the UI points to a mapped token that says what the color is for: text, icon, surface, and border, each with its own set.</p>
+      <div class="tokens" role="table" aria-label="Examples of semantic tokens">
+        <div class="row row--head" role="row"><span role="columnheader">Token</span><span role="columnheader">Points to</span><span role="columnheader">Used for</span></div>
+        <div class="row" role="row"><code role="cell">text/action</code><span class="raw" role="cell"><span class="dot" style="background:#2cfecc"></span>Turquoise/500</span><span class="use" role="cell">Links and primary actions</span></div>
+        <div class="row" role="row"><code role="cell">text/action-hover</code><span class="raw" role="cell"><span class="dot" style="background:#1fd6aa"></span>Turquoise/600</span><span class="use" role="cell">The same action, on hover</span></div>
+        <div class="row" role="row"><code role="cell">text/action-danger</code><span class="raw" role="cell"><span class="dot" style="background:#ff2e5b"></span>Red/500</span><span class="use" role="cell">Destructive actions only</span></div>
+        <div class="row" role="row"><code role="cell">surface/cards-default</code><span class="raw" role="cell"><span class="dot" style="background:#000"></span>Gray/Black</span><span class="use" role="cell">Card backgrounds</span></div>
+        <div class="row" role="row"><code role="cell">border/focus</code><span class="raw" role="cell"><span class="dot" style="background:#2cfecc"></span>Turquoise/500</span><span class="use" role="cell">Keyboard focus ring</span></div>
+      </div>
+
+      <div class="decision">
+        <span class="label">Decision: why A beats B</span>
+        <div class="vs">
+          <div class="opt opt--win"><small>A: semantic token</small><code>text/action</code></div>
+          <span class="beats">beats</span>
+          <div class="opt"><small>B: raw value</small><code>Turquoise/500 #2CFECC</code></div>
+        </div>
+        <p>A raw value only says what a color looks like, while a semantic token says what it is for, so a designer, an engineer, or an AI agent picks the right one without guessing. When the palette changes, we update one mapping instead of hunting through hundreds of components and screens.</p>
+      </div>
+
+      <div class="grid">
+        <a class="lb" href="media/jozuhub/ds-tokens.webp" data-wide data-caption="Mapped tokens in Figma: text, icon, surface, border, security report, license status, signed, and tag activity">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/ds-tokens.webp" alt="Figma variables tables for mapped text, icon, surface, and border tokens" loading="lazy" width="960" height="283"></div>
+          <figcaption>Mapped token sets in Figma, including product-specific sets for security reports and license status.</figcaption></figure>
+        </a>
+      </div>
+    </div>
+
+    <!-- How to document -->
+    <div class="sub">
+      <h3>How to document: write it down, or it does not exist</h3>
+      <p class="intro">Clear naming conventions, a description on every semantic token, and usage rules on every component, with do and don't examples.</p>
+      <div class="grid g2 dodont">
+        <div class="card"><span class="tag tag--mint">Do</span><h3>Primary button</h3><ul><li>Use one primary button per view, for the main action.</li><li>Start the label with a verb: Pull tag, Request approval.</li><li>Pair with a secondary button for the alternative.</li></ul></div>
+        <div class="card card--dont"><span class="tag tag--danger">Don't</span><h3>Primary danger button</h3><ul><li>Don't use it for anything that can be undone.</li><li>Don't place it without a confirmation dialog.</li><li>Don't use red for emphasis. Red means destructive.</li></ul></div>
+      </div>
+      <blockquote class="pull-quote">AI can now generate screens and front-end code from a design system, but it only knows what is written down. A human designer looks at a button and intuits that <strong>the red one is for deleting things. AI can't.</strong></blockquote>
+      <div class="tension prose">
+        <p>That makes documentation a product feature, not a chore. Token descriptions, component descriptions, and usage rules are what let an engineer, a new designer, or an AI agent build a screen that looks and behaves like Jozu Hub without a designer in the loop.</p>
+      </div>
+    </div>
+
+    <!-- Card example -->
+    <div class="sub">
+      <h3>Example: the repository card</h3>
+      <p class="intro">The card is the most reused pattern in Jozu Hub. It packs trust signals (signed, downloads, tags), the repository name and owner, and a summary of what is inside the latest ModelKit, with a one-click Pull Latest. Every state is designed and documented.</p>
+      <div class="grid">
+        <a class="lb strip" href="media/jozuhub/ds-repo-card.webp" data-caption="Repository card in default, hover, focus, and disabled states">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/ds-repo-card.webp" alt="Four repository cards for qwen2-7b in default, hover, focus, and disabled states" loading="lazy" width="1440" height="123"></div>
+          <figcaption>Repository card: default, hover, focus, disabled.</figcaption></figure>
+        </a>
+        <a class="lb strip" href="media/jozuhub/ds-activity-card.webp" data-caption="Activity card variant used in the Status page feed">
+          <figure><div class="frame"><img src="media/jozuhub/thumb/ds-activity-card.webp" alt="Four activity cards with import, pulled, and deleted tags" loading="lazy" width="1440" height="117"></div>
+          <figcaption>The activity variant, built from the same parts, with an event tag and timestamp.</figcaption></figure>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Product tour -->
+<section id="product">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">The product</span></div>
+        <h2>Jozu Hub, part by part</h2>
+      </div>
+      <div class="prose">
+        <p>The system at full scale. Each area answers one question for one kind of user. The full set of screens is in the <a href="case-study-jozuhub-gallery.html">image gallery</a>, and the end-to-end journeys are on the <a href="case-study-jozuhub-flows.html">flows page</a>.</p>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Sign up and onboarding: value before the login wall</h3>
+        <p>New visitors can browse public models before creating an account. Short tooltips point out the key actions, like importing a model from Hugging Face, and only ask you to log in when you try one. Sign up works with Google or email, and ends on a welcome message and a getting started guide.</p>
+        <a class="btn" href="case-study-jozuhub-flows.html#f0">See the sign up and log in flows <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g-side">
+        <a class="lb" href="media/jozuhub/onboarding-tooltips.webp" data-caption="Onboarding tooltips on the Discover page: import from Hugging Face, then log in to try"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/thumb/onboarding-tooltips.webp" alt="Discover page with an onboarding tooltip about importing from Hugging Face and a Login to try button, annotated with pink arrows" loading="lazy"></div><figcaption>Onboarding tooltips</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/flow-signup-login-map.webp" data-caption="Sign up and log in flow chart, including Google sign in, email verification, and password reset"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/thumb/flow-signup-login-map.webp" alt="Flow chart for sign up and log in with decision points and error paths" loading="lazy"></div><figcaption>Sign up and log in, every path</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Catalog: find a model you can trust</h3>
+        <p>Browse every repository you have access to. Filters for ModelKit contents, license status, visibility, signing, organization, and role sit in a drawer, so the cards keep the full width until you need them. Active filters show as removable chips, and an empty result always offers a way back.</p>
+        <a class="btn" href="https://jozu.ml/catalog" target="_blank" rel="noopener noreferrer">Try the catalog filters <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g3">
+        <a class="lb" href="media/jozuhub/catalog.webp" data-caption="Catalog"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/thumb/catalog.webp" alt="Catalog page with a grid of repository cards" loading="lazy"></div><figcaption>Catalog</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/catalog-filter.webp" data-caption="Catalog with the filter drawer open"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/thumb/catalog-filter.webp" alt="Catalog with a filter drawer on the left" loading="lazy"></div><figcaption>Filter drawer</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/catalog-empty.webp" data-caption="No results: active filters as chips and a clear-all action"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/thumb/catalog-empty.webp" alt="Catalog empty state with filter chips and a Clear all filters link" loading="lazy"></div><figcaption>Empty state</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Repository: everything about one model</h3>
+        <p>The repository page is the heart of the product. A tag picker, a copyable pull command, and a summary of the ModelKit contents sit on top. Tabs below cover the model card, contents, deploy instructions, security report, ModelKit diff, and the tag timeline.</p>
+        <a class="btn" href="https://jozu.ml/repository/jozu/llama3.1-70b/70B-text-f16/deploy" target="_blank" rel="noopener noreferrer">Try the repository page <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g-side">
+        <a class="lb" href="media/jozuhub/repo-detail.webp" data-caption="Repository detail page"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/repo-detail.webp" alt="Repository detail page for llama3.1-70b with tabs and ModelKit contents" loading="lazy" width="1536" height="4272"></div><figcaption>Repository detail. Click to see the full page.</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/tag-timeline.webp" data-caption="Tag timeline with date range picker and event filters"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/tag-timeline.webp" alt="Tag timeline with a date picker open" loading="lazy"></div><figcaption>Tag timeline</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>ModelKit diff: what changed between versions</h3>
+        <p>Before you promote a new version, you need to know exactly what is different. The split diff compares layers, files, digests, sizes, and annotations side by side, with removals in red and additions in green, and it collapses to a single column on mobile.</p>
+        <a class="btn" href="https://jozu.ml/repository/shoubhik/agentguard-policies/protected-branch-push...v1" target="_blank" rel="noopener noreferrer">Try the diff view <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g-side">
+        <a class="lb" href="media/jozuhub/modelkit-diff.webp" data-caption="ModelKit diff, split view"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/modelkit-diff.webp" alt="Split ModelKit diff with red and green highlighted rows" loading="lazy" width="1440" height="2266"></div><figcaption>Split view on desktop</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/modelkit-diff-mobile.webp" data-caption="ModelKit diff on mobile"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/modelkit-diff-mobile.webp" alt="ModelKit diff on a narrow mobile screen" loading="lazy"></div><figcaption>Single column on mobile</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Security scan report: from score to source</h3>
+        <p>Every ModelKit is scanned for threats like supply chain attacks, prompt injection, and backdoors. The donut chart doubles as a filter: click a severity to narrow the list, then expand a finding to see the affected file and why it was flagged. Failing scanners say so, instead of silently showing a clean report.</p>
+        <a class="btn" href="https://www.figma.com/proto/EyX0J2Q00W9H4tgmGyz8NJ/Security-scanner?node-id=1-1239&amp;viewport=1232%2C597%2C0.19&amp;t=YC6J0tWuk7JjMCfD-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;starting-point-node-id=1%3A1239&amp;page-id=0%3A1" target="_blank" rel="noopener noreferrer">Open the security scanner prototype <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g-side">
+        <a class="lb" href="media/jozuhub/security-report.webp" data-caption="ModelKit security scan report"><figure class="crop ar-1536x1100"><div class="frame"><img src="media/jozuhub/security-report.webp" alt="Security scan report with a severity donut chart and a list of findings" loading="lazy" width="1440" height="2419"></div><figcaption>Security scan report</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/status.webp" data-caption="Status page"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/status.webp" alt="Status page overview" loading="lazy"></div><figcaption>Findings roll up to Status</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Organizations: who can do what</h3>
+        <p>Teams group repositories and people into organizations with clear roles: Owner, Admin, Developer, and Guest. Admins manage members and roles in place, and an organization timeline keeps an exportable audit log of every push and pull.</p>
+      </div>
+      <div class="grid g3">
+        <a class="lb" href="media/jozuhub/org-repositories.webp" data-caption="Organization repositories"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/org-repositories.webp" alt="Organization page listing repositories" loading="lazy"></div><figcaption>Repositories</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/org-users.webp" data-caption="Organization users and roles"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/org-users.webp" alt="Organization users table with roles" loading="lazy"></div><figcaption>Users and roles</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/org-timeline.webp" data-caption="Organization timeline and audit log"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/org-timeline.webp" alt="Organization timeline of pushes and pulls" loading="lazy"></div><figcaption>Timeline and audit log</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Beyond the registry</h3>
+        <p>The same system stretched to new surfaces: a fleet view for Jozu Agent Guard, the runtime that enforces policies where agents run; a message center for imports and scan results; and the Jozu docs. The Fleet View has its own case study, a deep dive into turning a stream of agent activity into clear signals.</p>
+        <a class="btn" href="case-study-jozu.html">Read the Fleet View case study <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+      <div class="grid g3">
+        <a class="lb" href="media/jozuhub/agent-guard-fleet.webp" data-caption="Agent Guard Fleet: instances, versions, and connection status"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/agent-guard-fleet.webp" alt="Agent Guard Fleet dashboard with a donut chart, a version bar chart, and an instance table" loading="lazy"></div><figcaption>Agent Guard Fleet</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/messages.webp" data-caption="Messages"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/messages.webp" alt="Messages list with import and security report notifications" loading="lazy"></div><figcaption>Messages</figcaption></figure></a>
+        <a class="lb" href="media/jozuhub/docs.webp" data-caption="Jozu Hub docs"><figure class="crop ar-4x5"><div class="frame"><img src="media/jozuhub/thumb/docs.webp" alt="Jozu Hub documentation page with sidebar navigation" loading="lazy"></div><figcaption>Docs</figcaption></figure></a>
+      </div>
+    </div>
+
+    <div class="tour">
+      <div class="head">
+        <h3>Responsive by design</h3>
+        <p>Engineers check a scan result from their phone as often as from their desk. Breakpoints are designed per page, not left to chance.</p>
+      </div>
+      <div class="grid">
+        <a class="lb" href="media/jozuhub/catalog-responsive.webp" data-wide data-caption="Catalog with filters across mobile, tablet, and desktop breakpoints"><figure><div class="frame"><img src="media/jozuhub/thumb/catalog-responsive.webp" alt="Catalog screens at mobile, tablet, laptop, and desktop sizes" loading="lazy" width="960" height="324"></div><figcaption>Catalog and filters across breakpoints</figcaption></figure></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Impact -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="kicker"><span class="t">Impact</span></div>
+        <h2>From a blank file to a platform in use</h2>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">25K+</div><p>users of the product I designed</p></div>
+      <div class="stat"><div class="n">440K+</div><p>tasks executed by those users</p></div>
+      <div class="stat"><div class="n">0 to 1</div><p>first designer, from first sketch to live platform</p></div>
+      <div class="stat"><div class="n">1</div><p>design system the team still builds on</p></div>
+    </div>
+    <div class="cta">
+      <div><h3>See all the work</h3><p>Every screen and every flow, in one place.</p></div>
+      <div class="hero-actions">
+        <a class="btn" href="case-study-jozuhub-gallery.html">Open image gallery <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+        <a class="btn" href="case-study-jozuhub-flows.html">View user flows <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <nav class="next" aria-label="More case studies">
+    <a href="index.html#case-studies"><small>back</small>All case studies</a>
+    <a class="next__fwd" href="case-study-jozu.html"><small>next: feature deep dive</small>Agent Guard Fleet View</a>
+  </nav>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© Annika Gromig</p>
+      <p>Designed in Figma, created with Claude Code.</p>
+      <p>Vancouver, BC, Canada 🍁</p>
+    </div>
+    <div class="footer-legal"><a href="privacy.html">Privacy</a></div>
+  </footer>
+
+  <div class="lbx" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="close" aria-label="Close">&times;</button>
+    <div class="stage"><img alt=""></div>
+    <div class="bar"><button class="prev" aria-label="Previous image">&larr;</button><div class="cap"></div><button class="nextb" aria-label="Next image">&rarr;</button></div>
+  </div>
+
+  <script src="js/jozuhub-page.js"></script>
+</body>
+</html>

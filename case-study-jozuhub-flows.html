@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jozu Hub User Flows | Annika Gromig</title>
+<meta name="description" content="End-to-end user flows from the Jozu Hub case study: approvals, deploy, security scans, audit logs, filters, organizations, and docs.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&family=Major+Mono+Display&family=Space+Grotesk:wght@400;500;700&family=Titillium+Web:wght@300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/kitops.css" />
+<link rel="stylesheet" href="css/jozuhub.css" />
+<script defer src="https://cloud.umami.is/script.js" data-website-id="3f275b73-d81c-4c6d-b5e9-bce76691596a" data-domains="annikagromig.com,www.annikagromig.com,annikagromig.github.io" data-do-not-track="true"></script>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="nav__home">annika gromig</a>
+      <div class="nav__status">
+        <span class="status-dot"></span>
+        <span>Open for work</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+<header class="gh"><div class="wrap">
+<p class="eyebrow">jozu hub / user flows</p>
+<h1>Jozu Hub, flow by flow</h1>
+<p class="lede">Screens show what the product looks like. Flows show how it works. Each flow below starts with an actor and a goal, the same way I wrote them for engineering. Click a flow to open it, then click the image to zoom in and scroll around.</p>
+<a class="btn back-link" href="case-study-jozuhub.html"><svg style="transform:scaleX(-1)" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg> Back to case study</a>
+<div class="toc"><a href="#f0">Sign up, log in, and onboarding</a><a href="#f2">Deploy a model or agent skill</a><a href="#f3">Read a security scan report</a><a href="#f4">Open the repository audit log</a><a href="#f5">Filter the catalog</a><a href="#f6">Manage messages</a><a href="#f6b">Organization and user management</a><a href="#f7">Create an organization</a><a href="#f8">Change a user role</a><a href="#f9">Read the docs on any screen</a></div>
+</div></header>
+<section class="gallery-section" id="f0"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Getting started</span></div><h2>Sign up, log in, and onboarding</h2><dl><dt>Actor</dt><dd>A new user</dd><dt>Goal</dt><dd>Go from first visit to a working account and a first useful action</dd><dt>Highlights</dt><dd>Browse before signing up, onboarding tooltips that ask for a login only when you try something, Google or email sign up with verification, a welcome message, and a getting started guide</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-signup.webp" data-wide data-caption="Sign up, log in, and onboarding"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-signup.webp" alt="Sign up, log in, and onboarding: flow diagram of connected Jozu Hub screens" loading="lazy" width="1440" height="323"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+<div class="grid g2" style="margin-top:0"><a class="lb" href="media/jozuhub/flow-signup-login-map.webp" data-wide data-caption="Sign up and log in flow chart, including Google sign in, email verification, and password reset"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-signup-login-map.webp" alt="Sign up and log in flow chart, including Google sign in, email verification, and password reset" loading="lazy" width="960" height="725"></div><figcaption>Sign up and log in flow chart, including Google sign in, email verification, and password reset</figcaption></figure></a><a class="lb" href="media/jozuhub/onboarding-tooltips.webp" data-wide data-caption="Onboarding tooltips on the Discover page"><figure><div class="frame"><img src="media/jozuhub/thumb/onboarding-tooltips.webp" alt="Onboarding tooltips on the Discover page" loading="lazy" width="960" height="559"></div><figcaption>Onboarding tooltips on the Discover page</figcaption></figure></a></div></div></div></section>
+<section class="gallery-section" id="f2"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Deploy tab</span></div><h2>Deploy a model or agent skill</h2><dl><dt>Actor</dt><dd>ML Engineer</dd><dt>Goal</dt><dd>Get the right install or run command without reading the docs</dd><dt>Highlights</dt><dd>Pick your agent (Claude Code, Cline, Codex and more) or a container type, and the copyable command updates in place</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-deploy.webp" data-wide data-caption="Deploy a model or agent skill"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-deploy.webp" alt="Deploy a model or agent skill: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="285"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f3"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Security</span></div><h2>Read a security scan report</h2><dl><dt>Actor</dt><dd>ML Engineer, Security reviewer</dd><dt>Goal</dt><dd>Understand the risk of a ModelKit and find the source of a finding</dd><dt>Highlights</dt><dd>Severity chart as a filter, expandable findings, and a visible error when a scanner fails</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-security-scan.webp" data-wide data-caption="Read a security scan report"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-security-scan.webp" alt="Read a security scan report: flow diagram of connected Jozu Hub screens" loading="lazy" width="1440" height="330"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f4"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Permissions</span></div><h2>Open the repository audit log</h2><dl><dt>Actors</dt><dd>Owner and Maintainer</dd><dt>Goal</dt><dd>See who did what to a repository over the last year</dd><dt>Highlights</dt><dd>From the repository header to an activity heatmap and a filterable log, with different views per permission level</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-audit-log.webp" data-wide data-caption="Open the repository audit log"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-audit-log.webp" alt="Open the repository audit log: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="458"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f5"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Catalog</span></div><h2>Filter the catalog</h2><dl><dt>Actor</dt><dd>Anyone browsing models</dd><dt>Goal</dt><dd>Narrow hundreds of repositories down to the ones you can use</dd><dt>Highlights</dt><dd>Filter drawer, removable chips, and a clear empty state</dd></dl><a class="btn" href="https://jozu.ml/catalog" target="_blank" rel="noopener noreferrer">Try the catalog filters <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.3328 8H12.6672M8 12.6672L12.6672 8L8 3.3328" stroke="#FF00AA" stroke-width="2" stroke-linecap="round"/></svg></a></div>
+<a class="lb" href="media/jozuhub/flow-catalog-filters.webp" data-wide data-caption="Filter the catalog"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-catalog-filters.webp" alt="Filter the catalog: flow diagram of connected Jozu Hub screens" loading="lazy" width="720" height="473"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f6"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Messages</span></div><h2>Manage messages</h2><dl><dt>Actor</dt><dd>Any user</dd><dt>Goal</dt><dd>Keep the inbox of imports and scan results under control</dd><dt>Highlights</dt><dd>Delete one message or all of them, each behind its own confirmation</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-messages.webp" data-wide data-caption="Manage messages"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-messages.webp" alt="Manage messages: flow diagram of connected Jozu Hub screens" loading="lazy" width="720" height="595"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f6b"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Admin</span></div><h2>Organization and user management</h2><dl><dt>Actors</dt><dd>System Admin, Organization Admin</dd><dt>Goal</dt><dd>Manage who has access to what, across the whole Hub</dd><dt>Highlights</dt><dd>Every admin task written as numbered steps next to its flow: list, add, and remove users, create, list, and delete organizations, add and remove members, and change roles</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-org-user-map.webp" data-wide data-caption="Organization and user management"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-org-user-map.webp" alt="Organization and user management: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="721"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f7"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Organizations</span></div><h2>Create an organization</h2><dl><dt>Actor</dt><dd>Any signed-in user</dd><dt>Goal</dt><dd>Set up a shared space for a team</dd><dt>Highlights</dt><dd>Every step from the accounts page to a ready organization, including the edge cases</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-create-org.webp" data-wide data-caption="Create an organization"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-create-org.webp" alt="Create an organization: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="372"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f8"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Organizations</span></div><h2>Change a user role</h2><dl><dt>Actor</dt><dd>Organization Admin or Owner</dd><dt>Goal</dt><dd>Update the permissions of a member</dd><dt>Highlights</dt><dd>Pick the new role from the users table, confirm in a dialog, and get instant feedback</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-change-role.webp" data-wide data-caption="Change a user role"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-change-role.webp" alt="Change a user role: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="467"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+<section class="gallery-section" id="f9"><div class="wrap"><div class="flow">
+<div class="flow-meta"><div class="kicker"><span class="t">Docs</span></div><h2>Read the docs on any screen</h2><dl><dt>Actor</dt><dd>Developers and evaluators</dd><dt>Goal</dt><dd>Learn Jozu Hub concepts quickly</dd><dt>Highlights</dt><dd>Docs layouts for desktop, tablet, and mobile, with navigation that adapts</dd></dl></div>
+<a class="lb" href="media/jozuhub/flow-docs.webp" data-wide data-caption="Read the docs on any screen"><figure><div class="frame"><img src="media/jozuhub/thumb/flow-docs.webp" alt="Read the docs on any screen: flow diagram of connected Jozu Hub screens" loading="lazy" width="960" height="265"></div><figcaption>Click to open, then click the image to zoom.</figcaption></figure></a>
+</div></div></section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© Annika Gromig</p>
+      <p>Designed in Figma, created with Claude Code.</p>
+      <p>Vancouver, BC, Canada 🍁</p>
+    </div>
+    <div class="footer-legal"><a href="privacy.html">Privacy</a></div>
+  </footer>
+
+  <div class="lbx" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="close" aria-label="Close">&times;</button>
+    <div class="stage"><img alt=""></div>
+    <div class="bar"><button class="prev" aria-label="Previous image">&larr;</button><div class="cap"></div><button class="nextb" aria-label="Next image">&rarr;</button></div>
+  </div>
+
+  <script src="js/jozuhub-page.js"></script>
+</body>
+</html>

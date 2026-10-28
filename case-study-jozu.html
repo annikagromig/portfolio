@@ -280,6 +280,14 @@
     .meta-row__label { flex-basis: auto; }
     .case-figure-row { flex-direction: column; }
   }
+  /* ---------- Next / back ---------- */
+  .case-nav-wrap { padding-bottom: var(--section-py); }
+  .case-nav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding-top: 48px; border-top: 1px solid var(--line); }
+  .case-nav a { text-decoration: none; font-size: 24px; line-height: 32px; color: var(--ink); transition: color 200ms ease; }
+  .case-nav a:hover { color: var(--accent); }
+  .case-nav small { display: block; margin-bottom: 4px; font-size: 12px; line-height: 20px; letter-spacing: 0.48px; color: var(--muted); }
+  .case-nav__fwd { text-align: right; }
+  @media (max-width: 520px) { .case-nav a { font-size: 20px; line-height: 28px; } }
 </style>
 <style>
   .footer-legal {
@@ -325,7 +333,7 @@
         <p class="case-hero__subtitle">Agent Guard Fleet View</p>
         <div class="case-hero__intro">
           <p>Agent Guard evaluates every AI agent action against security policies as it happens. But when multiple agents are running, users need a simple way to understand what is happening across the fleet and where attention is needed.</p>
-          <p>I led the UX design for the Agent Guard Fleet View, turning a complex stream of system activity into a clear, scannable overview within Jozu Hub.</p>
+          <p>I led the UX design for the Agent Guard Fleet View, turning a complex stream of system activity into a clear, scannable overview within Jozu Hub. It is one part of <a class="text-link" href="case-study-jozuhub.html">Jozu Hub</a>, a platform I designed from 0 to 1.</p>
         </div>
       </div>
     </section>
@@ -340,6 +348,10 @@
           <div class="meta-row">
             <span class="meta-row__label">Team</span>
             <span class="meta-row__value">Jozu Hub, Product, Engineering</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row__label">Part of</span>
+            <span class="meta-row__value"><span><a class="text-link" href="case-study-jozuhub.html">Jozu Hub</a>, the platform I designed from 0 to 1</span></span>
           </div>
           <div class="meta-row">
             <span class="meta-row__label">Contribution</span>
@@ -394,7 +406,7 @@
         <div class="prose">
           <p>Before designing the interface, I worked with the CTO and development team to understand how Agent Guard worked, what information it produced, and how users were expected to interact with it.</p>
           <p>The key opportunity was clear: instead of making users inspect agents individually, we could give them a fleet-level overview and let them drill into the details when needed.</p>
-          <p>The design also had to fit naturally into the existing Jozu Hub experience, including navigation, audit information, visual language, and interaction patterns.</p>
+          <p>The design also had to fit naturally into the existing Jozu Hub experience, including navigation, audit information, <a class="text-link" href="case-study-jozuhub.html#system">visual language</a>, and interaction patterns.</p>
           <div class="subhead">
             <h3>Who are the users?</h3>
             <p>ML engineers and technical supervisors, including users who didn't need to understand the underlying infrastructure to monitor their agents.</p>
@@ -584,6 +596,12 @@
         </div>
       </div>
     </section>
+    <div class="narrow case-nav-wrap">
+      <nav class="case-nav" aria-label="More case studies">
+        <a href="case-study-jozuhub.html"><small>back: the platform</small>Jozu Hub</a>
+        <a class="case-nav__fwd" href="case-study-kitops.html"><small>next</small>KitOps</a>
+      </nav>
+    </div>
   </main>
 
   <footer class="site-footer">
