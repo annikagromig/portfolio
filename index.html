@@ -312,6 +312,30 @@
     font-size: 14px;
     color: var(--muted);
   }
+  .role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .role-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.24px;
+    color: var(--muted);
+    background: var(--bg);
+    white-space: nowrap;
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  .accordion-trigger:hover .role-tag {
+    border-color: var(--border);
+    color: var(--ink);
+  }
   .role-header__meta {
     display: flex;
     align-items: center;
@@ -868,6 +892,7 @@
               <div class="role-header__company">
                 <h3>Jozu</h3>
                 <p>UX Lead &amp; Founding Designer</p>
+                <span class="role-tags"><span class="role-tag">AI/ML infrastructure</span><span class="role-tag">B2B SaaS</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Apr 2023 - Sep 2026</p>
@@ -902,6 +927,7 @@
               <div class="role-header__company">
                 <h3>KitOps</h3>
                 <p>UX Lead &amp; Founding Designer</p>
+                <span class="role-tags"><span class="role-tag">Open source</span><span class="role-tag">AI/ML tooling</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Feb 2024 - Sep 2026</p>
@@ -932,6 +958,7 @@
               <div class="role-header__company">
                 <h3>PropRate</h3>
                 <p>Freelance Senior Product Designer</p>
+                <span class="role-tags"><span class="role-tag">Real estate</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Nov 2021 - Sep 2022</p>
@@ -962,6 +989,7 @@
               <div class="role-header__company">
                 <h3>MainAqila</h3>
                 <p>Freelance Senior Product Designer</p>
+                <span class="role-tags"><span class="role-tag">Bundesliga sports club</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jun 2021 - Jul 2022</p>
@@ -993,6 +1021,7 @@
               <div class="role-header__company">
                 <h3>AXA</h3>
                 <p>Freelance Senior Product Designer</p>
+                <span class="role-tags"><span class="role-tag">Insurance</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Dec 2021 - Jan 2022</p>
@@ -1021,8 +1050,9 @@
           <div class="timeline-row">
             <button type="button" class="role-header accordion-trigger" aria-expanded="false" aria-controls="panel-ruv">
               <div class="role-header__company">
-                <h3>R+V Versicherung (Insurance)</h3>
+                <h3>R+V Versicherung</h3>
                 <p>Freelance Senior Product Designer</p>
+                <span class="role-tags"><span class="role-tag">Insurance</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jun 2021 - Oct 2021</p>
@@ -1053,6 +1083,7 @@
               <div class="role-header__company">
                 <h3>NetCologne</h3>
                 <p>Senior UX Designer</p>
+                <span class="role-tags"><span class="role-tag">Telecommunications</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jun 2019 - Mar 2021</p>
@@ -1084,6 +1115,7 @@
               <div class="role-header__company">
                 <h3>WDR</h3>
                 <p>Senior UX Designer</p>
+                <span class="role-tags"><span class="role-tag">Public broadcasting</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jan 2019 - Nov 2019</p>
@@ -1110,8 +1142,9 @@
           <div class="timeline-row">
             <button type="button" class="role-header accordion-trigger" aria-expanded="false" aria-controls="panel-hdi">
               <div class="role-header__company">
-                <h3>HDI Versicherung (Insurance)</h3>
+                <h3>HDI Versicherung</h3>
                 <p>Senior UX Designer</p>
+                <span class="role-tags"><span class="role-tag">Insurance</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jan 2017 - Jun 2019</p>
@@ -1140,6 +1173,7 @@
               <div class="role-header__company">
                 <h3>Avenga</h3>
                 <p>Senior UX Designer</p>
+                <span class="role-tags"><span class="role-tag">IT consulting agency</span></span>
               </div>
               <div class="role-header__meta">
                 <p class="role-header__date">Jan 2017 - Dec 2020</p>
