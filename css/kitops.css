@@ -77,6 +77,32 @@ a { color: inherit; }
 }
 .nav__home:hover,
 .nav__link:hover { color: var(--ink); }
+.nav__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.48px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav__back svg { flex-shrink: 0; transition: transform 200ms ease; }
+.nav__back:hover { color: var(--ink); }
+.nav__back:hover svg { transform: translateX(-3px); }
+.nav__back:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.site-header.is-stuck { box-shadow: 0 1px 0 var(--line); }
+.site-header.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+}
 .nav__end { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; }
 .nav__status { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
