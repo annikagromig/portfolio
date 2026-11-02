@@ -292,6 +292,7 @@ a.lb:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .stat p { margin-top: 12px; font-size: 14px; line-height: 22px; color: var(--muted); }
 
 .cta { max-width: var(--measure); margin-left: auto; margin-right: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: var(--section-gap); padding: 0; }
+.cta:first-child { margin-top: 0; }
 .cta h3 { margin: 0; }
 .cta p { margin-top: 4px; font-size: 14px; line-height: 22px; color: var(--muted); }
 .btn {
