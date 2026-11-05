@@ -9,6 +9,27 @@
       });
     }, { threshold: 0.06 });
     sections.forEach(function (s) { s.classList.add('reveal'); io.observe(s); });
+
+    // The hero SVG builds itself up. Inside an <img> it would play on load (before it is scrolled to) and re-rasterise
+    // the whole image every frame, so swap it for an inline copy in a shadow root once it comes into view.
+    var hero = document.querySelector('.hero-img--status img');
+    if (hero && hero.attachShadow) {
+      var svgText = fetch(hero.getAttribute('src')).then(function (r) { return r.ok ? r.text() : null; }).catch(function () { return null; });
+      var hio = new IntersectionObserver(function (en) {
+        if (!en[0].isIntersecting) return;
+        hio.disconnect();
+        svgText.then(function (t) {
+          if (!t) return;
+          var host = document.createElement('div');
+          host.className = 'hero-svg';
+          host.setAttribute('role', 'img');
+          host.setAttribute('aria-label', hero.alt);
+          host.attachShadow({ mode: 'open' }).innerHTML = '<style>svg{display:block;width:100%;height:auto}</style>' + t;
+          hero.replaceWith(host);
+        });
+      }, { threshold: 0.35 });
+      hio.observe(hero);
+    }
   }
 
   var links = Array.prototype.slice.call(document.querySelectorAll('a.lb'));

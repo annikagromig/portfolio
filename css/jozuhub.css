@@ -13,6 +13,9 @@
 /* ---------- Hero ---------- */
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px 32px; }
 .hero + .wrap .hero-img { margin-bottom: 0; }
+/* Status board SVG framed on the blurred mint backdrop, same placement as the old flat screenshot */
+.hero-img--status { position: relative; aspect-ratio: 2240 / 1495; background: #051714 url(../media/jozuhub/hero-status-bg.webp) center / cover no-repeat; }
+.hero-img--status img, .hero-img--status .hero-svg { position: absolute; left: 8.884%; top: 11.371%; width: 82.188%; height: auto; max-width: none; }
 .meta--below { margin-top: clamp(40px, 6vw, 64px); }
 
 /* ---------- Tags ---------- */
