@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow" />
 <script>try { if (sessionStorage.getItem('pr-unlocked') !== '1') document.documentElement.classList.add('is-locked'); } catch (e) { document.documentElement.classList.add('is-locked'); }</script>
 <title>Making Property Data Readable | Annika Gromig</title>
-<meta name="description" content="Case study: redesigning PropRate's AI-powered property dashboard, migrating its design system to Figma, and rebuilding the blog mobile first." />
+<meta name="description" content="Case study: how one question in the rating wizard turned PropRate's AI property ratings into a portfolio dashboard, plus a Figma library migration and a mobile-first blog." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -560,6 +560,24 @@
   .footer-legal a:hover { color: var(--accent, #ff00aa); }
   .footer-legal a:focus-visible { outline: 2px solid var(--accent, #ff00aa); outline-offset: 2px; }
 </style>
+<style>
+  /* Keep figures from filling the screen; full size stays one tap away in the lightbox */
+  .case-figure img,
+  .case-figure--stage .stage img {
+    width: auto;
+    max-width: 100%;
+    max-height: min(520px, 62vh);
+    margin: 0 auto;
+  }
+  .case-header-image { padding: 0 32px; }
+  .case-header-image .wide { padding: 0; }
+  .case-header-image .case-figure img { max-height: none; width: 100%; }
+  @media (max-width: 700px) {
+    .case-figure img,
+    .case-figure--stage .stage img { max-height: 44vh; }
+    .case-figure--stage .stage { padding: 16px; }
+  }
+</style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="3f275b73-d81c-4c6d-b5e9-bce76691596a" data-domains="annikagromig.com,www.annikagromig.com,annikagromig.github.io" data-do-not-track="true"></script>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -599,8 +617,8 @@
         <h1 class="case-hero__title">Making AI property<br />ratings readable</h1>
         <p class="case-hero__subtitle">PropRate Portfolio Dashboard</p>
         <div class="case-hero__intro">
-          <p>PropRate helped property owners and investors understand the market quality of a property. Its AI analysis, called PropRating, combined sale price development over the last five years, location, the price range of comparable properties, and expected return into a single rating.</p>
-          <p>The analysis was strong, but the dashboard around it made it hard to tell what you owned, what you were watching, and where a property had come from. As a freelance product designer, I redesigned that dashboard, moved the design library from Sketch to Figma, and rebuilt the blog mobile first.</p>
+          <p>PropRate rated properties with its own AI analysis, PropRating, which combined five years of price development, location, comparable prices and expected return into a single score. The rating was strong. The dashboard around it was not: it could not tell what a user owned from what they were only watching, so it could not show investors the one thing worth coming back for, how their properties were performing.</p>
+          <p>As senior product designer, I traced that gap to a single missing piece of data, redesigned the rating flow and dashboard around it, and turned a list of identical cards into a real portfolio. Along the way, I consolidated three design tools into one Figma library and rebuilt the blog mobile first.</p>
           <p><a class="text-link" href="case-study-proprate-screens.html">See all screens &amp; flows</a></p>
         </div>
       </div>
@@ -637,19 +655,53 @@
       </div>
     </section>
 
+    <section class="case-header-image">
+      <div class="wide">
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/portfolio-devices.webp" data-caption="The redesigned portfolio across desktop, tablet and mobile."><img src="media/proprate/portfolio-devices.webp" width="2400" height="1333" alt="The redesigned My portfolio screen on laptop, tablet and phone" /></a>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="narrow">
+        <div class="section__head">
+          <p class="eyebrow">impact</p>
+          <h2>What changed</h2>
+        </div>
+        <div class="takeaway-grid">
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">01</span>
+            <h4>Ownership captured at the source</h4>
+            <p>One new question in the rating wizard told the system which properties a user owned. That unlocked performance tracking and a path to selling through the platform.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">02</span>
+            <h4>A dashboard that answers "how am I doing?"</h4>
+            <p>Owned properties open with market value, purchase price and development since purchase, readable within seconds on any screen size.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">03</span>
+            <h4>Three tools into one</h4>
+            <p>Sketch, Abstract and Zeplin replaced by a single Figma library built on atomic design, one source for design, collaboration and handoff.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="the-problem">
       <div class="narrow">
         <div class="section__head">
-          <p class="eyebrow">the problem</p>
-          <h2>A dashboard that lost track of its properties</h2>
+          <p class="eyebrow">challenge</p>
+          <h2>A strong rating, trapped in a weak dashboard</h2>
         </div>
         <div class="prose">
-          <p>Users could bring properties into PropRate in two ways: rate one of their own with a step-by-step rating wizard, or save a listing they found on an external platform. Both ended up on the same dashboard, split into two tabs: <em>All properties</em> and a <em>Watch list</em>.</p>
-          <p>In practice, that structure caused three problems:</p>
+          <p>PropRate let people search listings from the major real estate portals and rate any property with PropRating. The business wanted the dashboard to do more: show owners how their investments were performing, make PropRating the reason to come back, and open a new revenue stream by letting owners sell through the platform.</p>
+          <p>The existing dashboard could not support any of that. My UX review surfaced three problems:</p>
           <ol>
-            <li><strong>Saved listings changed without warning.</strong> Adding an external listing to the dashboard quietly turned it into a rated property. It lost its link to the original source, photos included. Making every value editable was actually useful for personal calculations, but without any explanation users simply lost track of what had happened.</li>
-            <li><strong>Every card looked the same.</strong> A property rated through the wizard and a listing saved from elsewhere used identical cards, so users struggled to find the properties they had added themselves.</li>
-            <li><strong>The dashboard was hard to reach.</strong> The main navigation had no link to it at all.</li>
+            <li><strong>Every card looked the same.</strong> A property rated in the wizard and a listing saved from a portal used identical cards. Liking one simply moved it to a second list, so users struggled to find the properties they had added themselves.</li>
+            <li><strong>Saved listings changed silently.</strong> Adding an external listing quietly turned it into a rated property, cut its link to the source and dropped its photos. Editable values were useful for personal calculations, but nothing told users what had happened.</li>
+            <li><strong>The dashboard was hard to reach.</strong> The navigation had not been updated since the MVP and had no link to it at all.</li>
           </ol>
         </div>
         <blockquote class="pull-quote">How might we help owners and investors see at a glance <strong>what they own, what they are watching, and how each property is doing?</strong></blockquote>
@@ -658,52 +710,36 @@
           <figcaption>Before: a self-rated property and a saved external listing look exactly the same, and the external one has lost its photos on the way in.</figcaption>
         </figure>
         <figure class="case-figure case-figure--stage">
-          <a class="lb" href="media/proprate/mobile-before.webp" data-caption="The mobile dashboard and the rating wizard before the redesign."><div class="stage"><img src="media/proprate/mobile-before.webp" width="876" height="1156" loading="lazy" alt="Two phone screens before the redesign: the saved properties list and the rating wizard" /></div></a>
-          <figcaption>The mobile dashboard and the rating wizard before the redesign.</figcaption>
-        </figure>
-        <figure class="case-figure case-figure--stage">
           <a class="lb" href="media/proprate/nav-missing-link.webp" data-caption="The open navigation: no way back to the dashboard."><div class="stage"><img src="media/proprate/nav-missing-link.webp" width="672" height="888" loading="lazy" alt="The open mobile navigation with three entries and no link to the dashboard" /></div></a>
           <figcaption>The open navigation: no way back to the dashboard.</figcaption>
         </figure>
-        </div>
+      </div>
     </section>
 
-    <section class="section" id="use-cases">
+    <section class="section" id="key-decision">
       <div class="narrow">
         <div class="section__head">
-          <p class="eyebrow">use cases &amp; flows</p>
-          <h2>Three goals, two kinds of property</h2>
+          <p class="eyebrow">key decision</p>
+          <h2>The system didn't know what you owned</h2>
         </div>
         <div class="prose">
-          <p>Rather than patching the cards, I went back to why people came to PropRate. The redesign focused on three use cases:</p>
-          <ol>
-            <li>Rate a property I own, to understand what it is worth today.</li>
-            <li>Rate a property I am considering, to see if it is a good investment.</li>
-            <li>Keep an eye on a listing I found on another platform.</li>
-          </ol>
+          <p>Rather than patching the cards, I went back to why people came to PropRate: to rate a property they own, to evaluate one they are considering, or to keep an eye on a listing found elsewhere. Mapping these use cases made the root cause obvious. Users thought in two categories, what they own and what they are watching. The product had no way to tell the two apart, so it could not show performance for owned properties at all.</p>
+          <p>Instead of asking users to sort their dashboard later, I added one question to the rating wizard: <em>are you rating your own property or an offer?</em> Owners then enter the purchase price and year, the two inputs needed to calculate value development since purchase. Everyone else goes straight to the address. Every property now lands in the right place from the start, and nothing changes type behind the user's back.</p>
         </div>
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/wizard-ownership-flow.webp" data-caption="The rating wizard with the new ownership question. Owners add purchase price and year, watched properties skip straight to the address."><img src="media/proprate/wizard-ownership-flow.webp" width="2400" height="1287" loading="lazy" alt="The mobile rating wizard as a flow: after the property details, a question asks whether the user owns the property, branching to purchase price and year for owners or directly to the address for watched properties" /></a>
+          <figcaption>The rating wizard with the new ownership question. Owners add purchase price and year, watched properties skip straight to the address.</figcaption>
+        </figure>
         <div class="prose">
-          <p>Mapping these out made the root problem obvious: the product treated every property the same, while users thought about them in two very different ways. Something you own is a portfolio item. Something you are evaluating is a candidate.</p>
-          <div class="subhead">
-            <h3>The approach</h3>
-            <ul>
-              <li>Separate owned and watched properties clearly, so nothing changes type behind the user's back.</li>
-              <li>Give owned properties a home that feels like a portfolio, with an overview and a performance outlook.</li>
-              <li>Reorganize the navigation so the portfolio and watched properties are always one tap away.</li>
-            </ul>
-          </div>
+          <p>The same split shaped the navigation. My portfolio and Watched properties moved to the top of the menu, one tap away from anywhere in the product.</p>
         </div>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/user-flows.webp" data-caption="User flows for all three use cases, from entry point to the finished rating or saved listing."><img src="media/proprate/user-flows.webp" width="2208" height="1304" loading="lazy" alt="User flow diagrams for rating a property and for monitoring a property from an external platform" /></a>
-          <figcaption>User flows for all three use cases, from entry point to the finished rating or saved listing.</figcaption>
-        </figure>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/wireframe-flow.webp" data-caption="Wireframe flow for use case 01, rating an owned property, from the landing page or the menu."><img src="media/proprate/wireframe-flow.webp" width="2400" height="1156" loading="lazy" alt="Wireframe flow for rating an owned property, from the landing page through the navigation and rating wizard to the portfolio" /></a>
-          <figcaption>Wireframe flow for use case 01, rating an owned property, from the landing page or the menu.</figcaption>
-        </figure>
         <figure class="case-figure case-figure--board">
           <a class="lb" href="media/proprate/nav-prototype.webp" data-caption="The new navigation puts My portfolio and Watched properties at the top of the menu."><img src="media/proprate/nav-prototype.webp" width="976" height="584" loading="lazy" alt="Prototype of the new navigation menu with entries for My portfolio, Watched properties, rating a property and saved searches" /></a>
           <figcaption>The new navigation puts My portfolio and Watched properties at the top of the menu.</figcaption>
+        </figure>
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/user-flows.webp" data-caption="User flows for all three use cases, from entry point to the finished rating or saved listing."><img src="media/proprate/user-flows.webp" width="2208" height="1304" loading="lazy" alt="User flow diagrams for rating a property and for monitoring a property from an external platform" /></a>
+          <figcaption>User flows for all three use cases, from entry point to the finished rating or saved listing.</figcaption>
         </figure>
       </div>
     </section>
@@ -711,42 +747,57 @@
     <section class="section" id="the-redesign">
       <div class="narrow">
         <div class="section__head">
-          <p class="eyebrow">the redesign</p>
+          <p class="eyebrow">redesign</p>
           <h2>From a list of cards to a portfolio</h2>
         </div>
         <div class="prose">
-          <p>We kept the familiar tab structure but gave each tab one clear job.</p>
+          <p>We kept the familiar two tabs but gave each one a single, clear job.</p>
           <div class="subhead">
             <h3>My properties</h3>
-            <p>A home for real estate the user owns. It opens with an overview of total value and expected performance, followed by the individual properties. It also leaves room for future features, such as selling a property directly through the platform.</p>
+            <p>A home for real estate the user owns. It opens with an overview of market value, purchase price and development since purchase, followed by the individual properties. It also leaves room for selling directly through the platform, the new revenue stream PropRate was aiming for.</p>
           </div>
           <div class="subhead">
             <h3>Watched properties</h3>
-            <p>Properties the user has rated or saved but does not own. Here PropRate also recommends similar properties, turning the tab into a starting point for the next investment.</p>
+            <p>Properties the user has rated or saved but does not own, followed by recommendations for similar ones. The tab becomes a starting point for the next investment.</p>
           </div>
         </div>
-        <figure class="case-figure case-figure--stage">
-          <a class="lb" href="media/proprate/portfolio-devices.webp" data-caption="The redesigned portfolio across desktop, tablet and mobile."><div class="stage"><img src="media/proprate/portfolio-devices.webp" width="2400" height="1333" loading="lazy" alt="The redesigned My portfolio screen on laptop, tablet and phone" /></div></a>
-          <figcaption>The redesigned portfolio across desktop, tablet and mobile.</figcaption>
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/dashboard-wireframe.webp" data-caption="Clickable wireframe of My properties: market value with its estimate range, value development over time, purchase price and development since purchase."><img src="media/proprate/dashboard-wireframe.webp" width="1380" height="1046" loading="lazy" alt="Wireframe of the My properties dashboard with total market value, a market price chart with a forecast line, purchase price, development since purchase and toggles for each property" /></a>
+          <figcaption>Clickable wireframe of My properties: market value with its estimate range, value development over time, purchase price and development since purchase.</figcaption>
         </figure>
         <figure class="case-figure case-figure--stage">
           <a class="lb" href="media/proprate/watched-properties.webp" data-caption="Watched properties, followed by recommendations for similar properties."><div class="stage"><img src="media/proprate/watched-properties.webp" width="1124" height="1764" loading="lazy" alt="The Watched properties tab with rated listings and recommendations for similar properties" /></div></a>
           <figcaption>Watched properties, followed by recommendations for similar properties.</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="section" id="data-visualization">
+      <div class="narrow">
+        <div class="section__head">
+          <p class="eyebrow">data visualization</p>
+          <h2>Numbers you can read at a glance</h2>
+        </div>
         <div class="prose">
-          <div class="subhead">
-            <h3>Making numbers readable at a glance</h3>
-            <p>The overview needed to tell users within seconds whether their investment was moving up or down. I explored several versions of the charts and key figures, then chose the final direction together with development, balancing clarity with what could be built and maintained efficiently.</p>
-          </div>
+          <p>An investor should know within seconds whether a property is moving up or down. I explored several ways to set purchase price against market value and show five years of value development: line charts, rings, bubbles and bars.</p>
+        </div>
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/chart-variants.webp" data-caption="Four directions for the overview: purchase price against market value, and estimated value development over five years."><img src="media/proprate/chart-variants.webp" width="1860" height="870" loading="lazy" alt="Four variations of the portfolio overview, each pairing a purchase price and market value line chart with a different visual for five-year value development: a summary, a ring, a circle and a bar chart" /></a>
+          <figcaption>Four directions for the overview: purchase price against market value, and estimated value development over five years.</figcaption>
+        </figure>
+        <div class="prose">
+          <p>I made the final call together with development, choosing the version that was clearest for users and the most sustainable and economical to build and maintain. I then defined the layouts across four breakpoints and tested them as a clickable prototype.</p>
+        </div>
+        <figure class="case-figure case-figure--board">
+          <a class="lb" href="media/proprate/portfolio-breakpoints.webp" data-caption="The portfolio at mobile, tablet (768 and 1024 px) and desktop."><img src="media/proprate/portfolio-breakpoints.webp" width="2400" height="874" loading="lazy" alt="The My portfolio screen at four breakpoints: mobile, tablet at 768 pixels, tablet at 1024 pixels and desktop" /></a>
+          <figcaption>The portfolio at mobile, tablet (768 and 1024 px) and desktop.</figcaption>
+        </figure>
+        <div class="prose">
           <div class="subhead">
             <h3>Designing for the first visit</h3>
             <p>A new user who opens the portfolio before rating anything sees an empty state with a direct shortcut to add their first property, instead of a blank page.</p>
           </div>
         </div>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/graph-exploration.webp" data-caption="One of the chart explorations: purchase price against market value, and the estimated value development over five years."><img src="media/proprate/graph-exploration.webp" width="1324" height="616" loading="lazy" alt="Chart exploration showing purchase price against market value over five years, next to estimated value development" /></a>
-          <figcaption>One of the chart explorations: purchase price against market value, and the estimated value development over five years.</figcaption>
-        </figure>
         <figure class="case-figure case-figure--stage">
           <a class="lb" href="media/proprate/empty-state.webp" data-caption="The empty state on desktop and mobile."><div class="stage"><img src="media/proprate/empty-state.webp" width="1416" height="1292" loading="lazy" alt="Empty state of the portfolio on desktop and mobile with a button to add a first property" /></div></a>
           <figcaption>The empty state on desktop and mobile.</figcaption>
@@ -758,36 +809,22 @@
       <div class="narrow">
         <div class="section__head">
           <p class="eyebrow">design system</p>
-          <h2>Rebuilding the library in Figma</h2>
+          <h2>Three tools into one Figma library</h2>
         </div>
         <div class="prose">
-          <p>PropRate's design work was spread across several tools: Sketch for design, Abstract for file hosting and version control, and Zeplin for developer handoff. Moving everything into Figma meant one place for design, collaboration and handoff.</p>
-          <p>Importing the Sketch files directly had never given me clean results, so instead of converting, I rebuilt the library from the ground up: color, typography, grid, buttons, forms and more, each with all states and responsive variants.</p>
+          <p>PropRate's design work was spread across Sketch for design, Abstract for version control and Zeplin for handoff. I moved everything into Figma. Instead of importing the Sketch files, which never converts cleanly, I rebuilt the library from the ground up: color, type, grid, buttons, forms and more, each with all states and responsive variants.</p>
+          <p>Following atomic design, I split the library into five files, so everyone always knew where a component lived:</p>
+          <ul>
+            <li><strong>00 Helpers:</strong> section headers, cursors and other elements for flows</li>
+            <li><strong>01 Brand Assets (atoms):</strong> logos, colors, type, icons, grid and spacing</li>
+            <li><strong>02 UI Components (molecules):</strong> buttons, form fields and controls</li>
+            <li><strong>03 UI Complexes (organisms):</strong> property cards, rating bars and teasers</li>
+            <li><strong>04 Wireframe Library:</strong> an external kit, extended for our own wireframes</li>
+          </ul>
         </div>
         <figure class="case-figure case-figure--board">
           <a class="lb" href="media/proprate/tool-migration.webp" data-caption="Three tools into one."><img src="media/proprate/tool-migration.webp" width="1116" height="520" loading="lazy" alt="Abstract, Zeplin and Sketch logos with an arrow pointing to the Figma logo" /></a>
           <figcaption>Three tools into one.</figcaption>
-        </figure>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/library-sources.webp" data-caption="The starting point: the Sketch library in Abstract, the style guide in Zeplin, and an extraction of its atoms and molecules."><img src="media/proprate/library-sources.webp" width="2400" height="680" loading="lazy" alt="The source material: the Sketch library in Abstract, the style guide in Zeplin, and extracted atoms and molecules" /></a>
-          <figcaption>The starting point: the Sketch library in Abstract, the style guide in Zeplin, and an extraction of its atoms and molecules.</figcaption>
-        </figure>
-        <div class="prose">
-          <div class="subhead">
-            <h3>A clear file structure</h3>
-            <p>Following atomic design, I split the library into five Figma files, so designers always knew where a component lived:</p>
-            <ul>
-              <li><strong>00 Helpers</strong><br />Elements that support flows and layouts, like section headers and cursors, kept out of the main library.</li>
-              <li><strong>01 Brand Assets (Atoms)</strong><br />Logos, colors, type, icons, grid and spacing.</li>
-              <li><strong>02 UI Components (Molecules)</strong><br />The essentials: buttons, form fields and controls.</li>
-              <li><strong>03 UI Complexes (Organisms)</strong><br />Product-specific elements such as property cards, rating bars and teasers.</li>
-              <li><strong>04 Wireframe Library</strong><br />An external wireframe kit, extended with the elements we needed for our own wireframes.</li>
-            </ul>
-          </div>
-        </div>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/figma-library-files.webp" data-caption="The library files in Figma, and the pages inside Brand Assets."><img src="media/proprate/figma-library-files.webp" width="1004" height="1512" loading="lazy" alt="The Figma library files and the pages inside the Brand Assets file" /></a>
-          <figcaption>The library files in Figma, and the pages inside Brand Assets.</figcaption>
         </figure>
         <figure class="case-figure case-figure--board">
           <a class="lb" href="media/proprate/design-system.webp" data-caption="An extract of the library: type system, grid, buttons, image gallery, rating badges and rating bars."><img src="media/proprate/design-system.webp" width="2352" height="2112" loading="lazy" alt="Extract of the design system: type system, grid, buttons, image gallery, rating badges and rating bars" /></a>
@@ -803,31 +840,8 @@
           <h2>A blog built for reading and for search</h2>
         </div>
         <div class="prose">
-          <p>PropRate wanted the blog to bring in more search traffic. Marketing planned landing pages that introduced new features and led visitors into the platform, plus a new tag system with pillar pages to group related articles. A well-structured blog also keeps readers on the site for longer.</p>
-          <p>The existing blog was simple: an overview with a limited set of tags as filters, and posts that were mostly plain text.</p>
-          <p>Together with marketing, I sorted the requirements into must-haves and nice-to-haves, then defined the structure of both page types:</p>
-          <div class="subhead">
-            <h3>Blog overview</h3>
-            <p>One highlighted post, article teasers with image, headline, tag, date and reading time, a tag system, search, and teasers for PropRate topics.</p>
-          </div>
-          <div class="subhead">
-            <h3>Blog post</h3>
-            <p>Header image, headline, two to five tags, date, author, reading time and a reading progress bar, rich text with quotes, images and external links, share options, and teasers for related articles.</p>
-          </div>
-        </div>
-        <figure class="case-figure case-figure--board">
-          <a class="lb" href="media/proprate/blog-requirements.webp" data-caption="The requirement board, split into must-haves and nice-to-haves."><img src="media/proprate/blog-requirements.webp" width="864" height="2016" loading="lazy" alt="Requirement board for the blog with sticky notes for the article page and the overview page, split into must-haves and nice-to-haves" /></a>
-          <figcaption>The requirement board, split into must-haves and nice-to-haves.</figcaption>
-        </figure>
-        <figure class="case-figure case-figure--stage">
-          <a class="lb" href="media/proprate/blog-before.webp" data-caption="Before: the blog overview and a blog post on mobile."><div class="stage"><img src="media/proprate/blog-before.webp" width="1356" height="1056" loading="lazy" alt="The blog overview and a blog post on mobile before the redesign" /></div></a>
-          <figcaption>Before: the blog overview and a blog post on mobile.</figcaption>
-        </figure>
-        <div class="prose">
-          <div class="subhead">
-            <h3>Mobile first</h3>
-            <p>We followed a mobile-first approach, then adapted the key layouts for tablet and desktop as far as the timeline allowed. I also increased the line height of the article text to meet a comfortable reading standard.</p>
-          </div>
+          <p>Marketing wanted the blog to bring in search traffic, with feature landing pages and a new tag system of pillar pages. The existing blog was an overview with a few tag filters and mostly plain text posts.</p>
+          <p>Together with marketing, I sorted the requirements into must-haves and nice-to-haves, then designed both page types mobile first. The overview got a highlighted post, rich article teasers, tags and search. The post template got reading time, a reading progress bar, quotes, images, sharing and related articles. I also increased the line height of article text to a comfortable reading standard.</p>
         </div>
         <figure class="case-figure case-figure--board">
           <a class="lb" href="media/proprate/blog-viewport-xs.webp" data-caption="Mobile at 320px: blog overview, tag landing pages, and a blog post with reading progress bar."><img src="media/proprate/blog-viewport-xs.webp" width="1996" height="1340" loading="lazy" alt="Mobile designs at 320 pixels: blog overview, tag landing pages and the blog post with reading progress bar" /></a>
@@ -843,12 +857,12 @@
     <section class="section" id="the-outcome">
       <div class="narrow">
         <div class="section__head">
-          <p class="eyebrow">the outcome</p>
+          <p class="eyebrow">outcome</p>
           <h2>Clear structure before new features</h2>
         </div>
         <div class="prose">
-          <p>PropRate's AI analysis was only as useful as the interface around it. By separating owned from watched properties, the dashboard finally matched how users thought about their real estate, and every property kept a clear origin.</p>
-          <p>Alongside the redesign, the team got a Figma library that brought design, collaboration and handoff into one place, and a blog structure ready for the new SEO strategy.</p>
+          <p>PropRate's AI analysis was only as useful as the interface around it. By capturing ownership at the moment of rating, the dashboard finally matched how users thought about their real estate, every property kept a clear origin, and the business gained the data it needed for performance predictions and future sales features.</p>
+          <p>The team also came away with one Figma library for design, collaboration and handoff, and a blog structure ready for the new SEO strategy.</p>
         </div>
         <div class="subhead">
           <h3 style="font-size:24px; font-weight:400; line-height:32px; margin:0;">What I took away:</h3>
@@ -856,13 +870,13 @@
         <div class="takeaway-grid">
           <article class="takeaway-card">
             <span class="takeaway-card__num">01</span>
-            <h4>Never change data silently</h4>
-            <p>If the system transforms something the user added, say so. Otherwise a useful feature turns into a source of confusion.</p>
+            <h4>Fix the data, not the cards</h4>
+            <p>The visual problems all traced back to one missing fact. Asking a single question at the right moment solved more than any card redesign could.</p>
           </article>
           <article class="takeaway-card">
             <span class="takeaway-card__num">02</span>
-            <h4>Structure follows mental models</h4>
-            <p>Owners and investors think in "mine" and "maybe". The dashboard got clearer once it did too.</p>
+            <h4>Never change data silently</h4>
+            <p>If the system transforms something the user added, say so. Otherwise a useful feature turns into a source of confusion.</p>
           </article>
           <article class="takeaway-card">
             <span class="takeaway-card__num">03</span>
@@ -893,7 +907,7 @@
     </section>
     <div class="narrow case-nav-wrap">
       <nav class="case-nav" aria-label="More case studies">
-        <a href="case-study-netcologne.html"><small>back</small>NetCologne</a>
+        <a href="case-study-mainaqila.html"><small>back</small>MainAqila</a>
         <a class="case-nav__fwd" href="case-study-jozuhub.html"><small>next</small>Jozu Hub</a>
       </nav>
     </div>
