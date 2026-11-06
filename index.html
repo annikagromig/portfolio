@@ -33,6 +33,8 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
+  /* While the page loads (back from a case study, or a #case-studies link), jump instead of scrolling down from the top. */
+  html.no-smooth { scroll-behavior: auto; }
   body {
     margin: 0;
     background: var(--bg);
@@ -826,6 +828,15 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('no-smooth');
+    window.addEventListener('load', function () {
+      setTimeout(function () { root.classList.remove('no-smooth'); }, 300);
+    });
+  })();
+</script>
 </head>
 <body>
 

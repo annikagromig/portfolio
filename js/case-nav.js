@@ -1,12 +1,14 @@
 // Case study nav: "back" link and a header that hides on scroll down and returns on scroll up.
 (function () {
-  // Back: return to the previous page (and its scroll position) when it was on this site;
+  // Back: return to the homepage (and its scroll position) when that is where we came from;
   // otherwise follow the link's href to the page this one belongs to.
   var link = document.querySelector('.nav__back');
   if (link) {
     link.addEventListener('click', function (e) {
       try {
-        if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) {
+        var ref = document.referrer && new URL(document.referrer);
+        // Only when the previous page was the homepage: coming from another case study, follow the href.
+        if (ref && ref.origin === location.origin && !/case-study/.test(ref.pathname) && history.length > 1) {
           e.preventDefault();
           history.back();
         }
