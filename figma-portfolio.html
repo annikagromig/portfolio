@@ -680,10 +680,7 @@
     flex-direction: column;
     gap: 4px;
   }
-  .connect-row--bordered .connect-item {
-    border-bottom: 1px solid var(--border);
-  }
-  .connect-row--bordered .connect-item:first-child { padding-right: 24px; }
+  .connect-item:first-child { padding-right: 24px; }
   .connect-item h3 {
     margin: 0;
     font-weight: 400;
@@ -698,9 +695,6 @@
   }
   .nowrap-line {
     white-space: nowrap;
-  }
-  .connect-item--time {
-    text-align: right;
   }
   .connect-link,
   .text-link {
@@ -730,6 +724,10 @@
     gap: 12px 24px;
     font-size: 14px;
     color: var(--muted);
+  }
+  @media (min-width: 641px) {
+    .footer-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
+    .footer-inner > :last-child { justify-self: end; text-align: right; }
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -791,10 +789,8 @@
 
   @media (max-width: 640px) {
     .expertise-grid { grid-template-columns: 1fr; }
-    .connect-row--bordered { flex-direction: column; }
-    .connect-row--bordered .connect-item:first-child { padding-right: 0; }
-    .connect-row:not(.connect-row--bordered) { flex-direction: column; }
-    .connect-item--time { text-align: left; }
+    .connect-row { flex-direction: column; }
+    .connect-item:first-child { padding-right: 0; }
     .nowrap-line { white-space: normal; }
     .role-header { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 16px; }
     .role-header__company { flex: 0 1 auto; }
@@ -1448,23 +1444,16 @@
     <section class="section" id="connect">
       <div class="narrow">
         <p class="eyebrow">connect</p>
-        <div>
-          <div class="connect-row connect-row--bordered">
-            <div class="connect-item">
-              <h3>Get in touch</h3>
-              <p><a class="connect-link" href="mailto:hi@annikagromig.com">hi@annikagromig.com</a></p>
-              <p><a class="connect-link" href="https://www.linkedin.com/in/annika-gromig-1753b7105/" target="_blank" rel="noopener noreferrer">linkedin.com/in/annikagromig</a></p>
-            </div>
-            <div class="connect-item">
-              <h3>Location</h3>
-              <p>Working remotely worldwide,<br /><span class="nowrap-line">with on-site availability in Vancouver, BC, Canada 🍁</span></p>
-            </div>
+        <div class="connect-row">
+          <div class="connect-item">
+            <h3>Get in touch</h3>
+            <p><a class="connect-link" href="mailto:hi@annikagromig.com">hi@annikagromig.com</a></p>
+            <p><a class="connect-link" href="https://www.linkedin.com/in/annika-gromig-1753b7105/" target="_blank" rel="noopener noreferrer">linkedin.com/in/annikagromig</a></p>
           </div>
-          <div class="connect-row">
-            <div class="connect-item"></div>
-            <div class="connect-item connect-item--time">
-              <p id="local-time">3:27 PM local time</p>
-            </div>
+          <div class="connect-item">
+            <h3>Location</h3>
+            <p>Working remotely worldwide,<br /><span class="nowrap-line">with on-site availability in Vancouver, BC, Canada</span></p>
+            <p id="local-time">3:27 PM local time</p>
           </div>
         </div>
       </div>

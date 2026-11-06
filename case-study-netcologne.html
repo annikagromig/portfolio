@@ -302,6 +302,10 @@
     font-size: 14px;
     color: var(--muted);
   }
+  @media (min-width: 641px) {
+    .footer-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
+    .footer-inner > :last-child { justify-self: end; text-align: right; }
+  }
 
   /* ---------- Scroll reveal ---------- */
   .reveal {
